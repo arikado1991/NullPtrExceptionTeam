@@ -1,0 +1,61 @@
+﻿var materialDest:   Material;
+
+function generateLevel3(grid:Grid){
+	var block: SpaceBox;
+	var pos: Vector3;
+	
+	for (var i: int=0; i<11; i++){
+		for (var j: int=0;j<10;j++){
+			grid.CreateTile(Vector3(i,0,j));
+			grid.CreateBlock(Vector3(i,0,j));
+			if (i==0)
+			{
+				grid.CreateBlock(Vector3(i,1,j));
+				grid.CreateBlock(Vector3(i,2,j));
+				grid.CreateBlock(Vector3(i,3,j));
+			}
+			if (i==10)
+			{
+				grid.CreateBlock(Vector3(i,1,j));
+				grid.CreateBlock(Vector3(i,2,j));
+				grid.CreateBlock(Vector3(i,3,j));
+			}
+			if (j>=5)
+			{
+				grid.CreateBlock(Vector3(i,1,j));
+				grid.CreateBlock(Vector3(i,2,j));
+			}
+			
+		}
+	}
+	
+	grid.CreateIceBlock(Vector3(3,1,2));
+		
+	setDestination(grid, Vector3(5, 2, 8));
+}
+
+
+function setDestination(grid:Grid, location:Vector3){
+	grid.getSpaceBox(location).destination=true;
+	grid.getSpaceBox(location).prefab.transform.GetChild(7).renderer.material=materialDest;
+}
+
+var windowRect : Rect = Rect (Screen.width/2-150, 10, 300, 200);
+var buttonW:int = 200;
+var buttonH:int = 100;
+var instruct: int=0;
+function OnGUI(){
+	if (instruct==0){
+	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Push the green cube forward\n (Press space to continue)");
+	 }
+	if (instruct==1){
+	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Step on it to climb the cliff\n (Press space to continue)");
+	}
+}
+
+function InstructionFunction(windowID: int){
+	if (Input.GetKeyUp("space"))
+	{
+		instruct+=1;
+	}
+}

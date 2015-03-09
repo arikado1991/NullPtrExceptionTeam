@@ -1,0 +1,111 @@
+﻿#pragma strict
+enum GridState {IDLE, INGAME};
+class Grid extends System.Object{
+	var prefabs: GameObject[];
+	var grid: SpaceBox[,,];
+	var character: Character;
+	var state: GridState;
+	
+	function Grid(prefabs: GameObject[]){
+		state = GridState.IDLE;
+		this.prefabs = prefabs;
+	}
+	
+	function SetGrid(w:int,h:int,d:int){
+		grid = new SpaceBox[w,h,d];
+	}
+	
+	function SpawnCharacter( pos: Vector3){
+		
+		while(!hasStandable(pos))
+			pos.y--;
+		character = new Character(pos,prefabs[0]);
+	}
+	
+	function BuildRect(BLN: Vector3, TRF: Vector3, type: String){
+		for (var i: int = BLN.x; i <= TRF.x; i++)
+			for (var j: int = BLN.y; j <= TRF.y; j++)
+				for (var k:int = BLN.z; k <= TRF.z; k++){
+					switch(type){
+					case "box":
+						CreateBlock(Vector3(i,j,k));
+					default: continue;
+					}
+				}
+		
+	}
+	
+	function getSpaceBox(pos:Vector3){
+		if (pos.x < 0 || pos.y < 0 || pos.z < 0 ||
+			pos.x >= grid.GetLength(0) || 
+			pos.y >= grid.GetLength(1) || 
+			pos.z >= grid.GetLength(2)) 
+			return null;
+		return grid[Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), Mathf.RoundToInt(pos.z)];
+	}
+	
+
+	
+	function hasBox(pos:Vector3):boolean{
+		var sp: SpaceBox = getSpaceBox(pos);
+		if (sp == null) return false;
+		return sp.GetType() == typeof (Block) || sp.GetType().IsSubclassOf(typeof(Block));
+		
+	}
+	
+	function hasIce(pos:Vector3):boolean{
+
+		var box = getSpaceBox(pos);
+		if (box && box.GetType() == typeof (IceBlock)){
+			Debug.Log("pos="+pos.ToString()+"type="+box.GetType());
+			return true;
+		}
+		return false;
+	}
+	
+	function hasStandable(pos: Vector3):boolean{
+	
+		return !hasBox(pos) && hasBox(Vector3(pos.x,pos.y-1,pos.z));
+	}
+	
+	function CreateIceBlock(pos: Vector3):IceBlock{
+		var b: IceBlock = new IceBlock(this);
+		b.loadPos (pos);
+		b.loadPrefab(prefabs[3]);
+		if (grid[pos.x, pos.y, pos.z])
+			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
+		grid[pos.x, pos.y, pos.z] = b;
+		return b;
+	}
+	
+	function CreateBlock(pos: Vector3):Block{
+		var b: Block = new Block(this);
+		b.loadPos (pos);
+		b.loadPrefab(prefabs[2]);
+		if (grid[pos.x, pos.y, pos.z])
+			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
+		grid[pos.x, pos.y, pos.z] = b;
+		return b;
+	}
+	
+	function CreateButton(pos: Vector3):Block{
+		var b: Block = new Block(this);
+		b.loadPos (pos);
+		b.loadPrefab(prefabs[4]);
+		b.setButton();
+		if (grid[pos.x, pos.y, pos.z])
+			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
+		grid[pos.x, pos.y, pos.z] = b;
+		return b;
+	}
+	
+	function CreateTile(pos:Vector3){
+		var t: Tile = new Tile(this);
+		t.loadPos(pos);
+		t.loadPrefab(prefabs[1]);
+		grid[pos.x,pos.y,pos.z] = t;
+	}
+};
+
+
+
