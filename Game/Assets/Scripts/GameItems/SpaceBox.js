@@ -1,5 +1,5 @@
 ﻿#pragma strict
-
+enum BoxType {BLOCK, ICE, BUTTON};
 class SpaceBox extends System.Object{
 
 	var state: boolean = false;
@@ -8,9 +8,8 @@ class SpaceBox extends System.Object{
 
 	var pos: Vector3;
 	var destination: boolean=false;
-	var button: boolean=false;
-	var pushed: boolean=false;
-	var buttonCreateBlocks: boolean = true;
+	var type: BoxType;
+
 
 
 	function SpaceBox( grid: Grid){
@@ -27,9 +26,7 @@ class SpaceBox extends System.Object{
 		this.prefab.transform.position = Vector3(pos.x, pos.y, pos.z);
 	}
 	
-	function setButton(){
-		this.button=true;
-	}
+
 	
 	
 }

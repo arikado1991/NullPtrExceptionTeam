@@ -40,18 +40,18 @@ class Character extends System.Object
 	}
 
 	function tryToPushIce( dir: Dir, grid: Grid)  {
-		var target:Vector3 = spaceInFront(pos, dir);
-		if (!grid.hasIce(target))
-			return;
 		
-			var ice:IceBlock = grid.getSpaceBox(target);
-			var obj:GameObject = ice.prefab;
-			Debug.Log(obj.GetComponent(IceBlockScript));
-			obj.SendMessage("setGrid", grid);
-			obj.SendMessage("setBox", ice);
-			obj.SendMessage("slide", dir);
-			Debug.Log("Ice block should be pushed");
-			yield WaitForSeconds(.4);
+		var b: SpaceBox = grid.getSpaceBox(spaceInFront(pos, dir));
+		if (!b || b.type != BoxType.ICE){
+			return;
+		}
+	
+		var obj:GameObject = b.prefab;
+		obj.SendMessage("setGrid", grid);
+		obj.SendMessage("setBox", b);
+		obj.SendMessage("slide", dir);
+		Debug.Log("Ice block should be pushed");
+		
 		
 	}
 
@@ -73,18 +73,16 @@ class Character extends System.Object
 			}
 		return desiredPos;
 	}
-	
+	function checkBelow(grid:Grid){
+		return grid.getSpaceBox(pos+Vector3.down);
+	}
 	function move( dir: Dir, grid: Grid )
 	{	
 		Debug.LogError(prefab == null);
 		var fig: Transform= prefab.FindGameObjectWithTag("Player").transform;
 		var time: float = 0.4;
 		
-		if (isMoving) {
-	
-			return;
-		}
-		
+		if (isMoving) return;
 		if (this.dir != dir){
 			this.dir = dir;
 			var finalR: float;
@@ -101,12 +99,10 @@ class Character extends System.Object
 			default:
 				finalR = 3;				
 			}
-			
 			fig.transform.RotateAround(fig.collider.bounds.center, Vector3.up,90*(this.dirction-finalR));
 			this.dirction=finalR;
-			
+			return;
 		}
-		
 		
 		var target:Vector3 = motionTarget(dir, grid);
 
@@ -125,6 +121,12 @@ class Character extends System.Object
 		pos = endPos;
 		
 		isMoving = false;
+		var below = checkBelow(grid);
+		
+		if (below.type == BoxType.BUTTON){
+			(below as ButtonBox).getPushed();
+		}
+		
 		return;
 	}
 

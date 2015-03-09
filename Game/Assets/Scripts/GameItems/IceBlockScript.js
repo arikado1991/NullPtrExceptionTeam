@@ -27,12 +27,7 @@ function spaceInFront(pos: Vector3, dir:Dir):Vector3{
 }
 	
 function canMove(dir:Dir):boolean{
-	var target:Vector3 = spaceInFront(transform.position, dir);
-	if (grid.hasStandable(target)){
-		return false;
-	}else{
-		return true;
-	}
+	return grid.hasStandable(spaceInFront(transform.position, dir));
 }
 
 function roundPos(){

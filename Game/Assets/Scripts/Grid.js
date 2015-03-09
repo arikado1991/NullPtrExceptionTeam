@@ -101,7 +101,6 @@ class Grid extends System.Object{
 		var b: Block = new ButtonBox(this, boxes2make, boxes2dest);
 		b.loadPos (pos);
 		b.loadPrefab(prefabs[4]);
-		b.setButton();
 		if (grid[pos.x, pos.y, pos.z])
 			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
 		grid[pos.x, pos.y, pos.z] = b;

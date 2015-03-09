@@ -38,7 +38,8 @@ function getControlKey(){
 	
 	if (Input.GetKeyUp('z')){
 		processing = true;
-		character.tryToPushIce(character.dir, grid);
+		
+		character.tryToPushIce(character.dir, grid);Debug.Log('z');
 	}
 	
 	if (Input.GetKeyDown (KeyCode.UpArrow)){
@@ -67,20 +68,13 @@ function getControlKey(){
 	if (character.isMoving==false){
 	
 
-	if (p.y >= 0 && grid.getSpaceBox(p)!=null && grid.getSpaceBox(p).destination==true)
-	{	
-		//Debug.Log(character.pos.ToString());
-		state="win";
-	}
+		if (p.y >= 0 && grid.getSpaceBox(p)!=null && grid.getSpaceBox(p).destination==true)
+		{	
+			//Debug.Log(character.pos.ToString());
+			state="win";
+		}
 	
-	if (p.y >= 0 && grid.getSpaceBox(p)!=null && grid.getSpaceBox(p).destination==true)
-	{	
-		//Debug.LogError("PUSH!!!");
-		//Debug.Log(character.pos.ToString());
-		var b2: ButtonBox = grid.getSpaceBox(p);
-		b2.getPushed();
-		character.onButton=true;
-	}
+
 	}
 	processing = false;
 	
