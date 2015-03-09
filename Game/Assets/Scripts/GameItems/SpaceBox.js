@@ -11,7 +11,7 @@ class SpaceBox extends System.Object{
 	var button: boolean=false;
 	var pushed: boolean=false;
 	var buttonCreateBlocks: boolean = true;
-	var blocksToMake: Vector3[] = [Vector3(0,3,0), Vector3(0,4,0)];
+
 
 	function SpaceBox( grid: Grid){
 		this.grid = grid;		
@@ -31,32 +31,5 @@ class SpaceBox extends System.Object{
 		this.button=true;
 	}
 	
-	function getPushed(){
 	
-		if (this.pushed==false)
-		{
-			this.pushed=true;
-			this.prefab.transform.GetChild(11).Translate(Vector3.up*-0.08); //TODO: make this less magic-number-y
-			//= Vector3(pos.x-0.6,pos.y+,pos.z-0.6);
-			
-			for (var i = 0; i < blocksToMake.length; i++){
-				if (buttonCreateBlocks){
-					grid.CreateBlock(blocksToMake[i]);
-				} else {
-					GameObject.Destroy(grid.getSpaceBox(blocksToMake[i]).prefab);
-				}
-			}
-			//buttonCreateBlocks = !buttonCreateBlocks;
-		}
-	}
-		
-	function Unpushed(){
-		//Debug.Log("Unpush0");
-		if (this.pushed==true)
-		{
-			this.pushed=false;
-			//Debug.Log("Unpush");
-			this.prefab.transform.GetChild(11).Translate(Vector3.up*0.08);
-		}
-	}
 }

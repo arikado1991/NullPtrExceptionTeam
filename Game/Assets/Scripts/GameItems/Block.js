@@ -6,6 +6,13 @@ class Block extends SpaceBox{
 		super(grid);
 	}
 
-	function OnPressed(){}
 	
-}
+};
+
+class IceBlock extends SpaceBox{
+
+	function IceBlock( grid: Grid){
+		super(grid);	
+	}
+};
+

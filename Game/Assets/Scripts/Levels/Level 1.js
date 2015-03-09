@@ -7,6 +7,7 @@ function GenerateLevel(grid:Grid){
 	grid.SetGrid(10,10,10);
 	
 	grid.BuildRect(Vector3(0, 0, 0), Vector3(9,0,5),"box");
+	grid.CreateButton(Vector3(4, 1, 3), [Vector3(5,1,5),Vector3(6,1,5),Vector3(7,1,5)],[]);
 	grid.BuildRect(Vector3(0, 0, 7), Vector3(9,0,9),"box");
 	
 	grid.SpawnCharacter(Vector3(0,9,0));

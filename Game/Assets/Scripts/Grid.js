@@ -32,7 +32,6 @@ class Grid extends System.Object{
 					default: continue;
 					}
 				}
-		
 	}
 	
 	function getSpaceBox(pos:Vector3){
@@ -63,6 +62,15 @@ class Grid extends System.Object{
 		return false;
 	}
 	
+	function hasButton(pos: Vector3):boolean{
+		var box = getSpaceBox(pos);
+		if (box && box.GetType() == typeof (ButtonBox)){
+			Debug.Log("pos="+pos.ToString()+"type="+box.GetType());
+			return true;
+		}
+		return false;
+	}
+	
 	function hasStandable(pos: Vector3):boolean{
 	
 		return !hasBox(pos) && hasBox(Vector3(pos.x,pos.y-1,pos.z));
@@ -87,9 +95,10 @@ class Grid extends System.Object{
 		grid[pos.x, pos.y, pos.z] = b;
 		return b;
 	}
+
 	
-	function CreateButton(pos: Vector3):Block{
-		var b: Block = new Block(this);
+	function CreateButton(pos: Vector3, boxes2make: Vector3[], boxes2dest:Vector3[]):Block{
+		var b: Block = new ButtonBox(this, boxes2make, boxes2dest);
 		b.loadPos (pos);
 		b.loadPrefab(prefabs[4]);
 		b.setButton();
@@ -98,13 +107,7 @@ class Grid extends System.Object{
 		grid[pos.x, pos.y, pos.z] = b;
 		return b;
 	}
-	
-	function CreateTile(pos:Vector3){
-		var t: Tile = new Tile(this);
-		t.loadPos(pos);
-		t.loadPrefab(prefabs[1]);
-		grid[pos.x,pos.y,pos.z] = t;
-	}
+
 };
 
 

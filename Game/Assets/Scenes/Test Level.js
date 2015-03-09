@@ -7,7 +7,7 @@ function generateDemoLevel(grid:Grid){
 	
 	for (var i: int=0; i<20; i++){
 		for (var j: int=0;j<20;j++){
-			grid.CreateTile(Vector3(i,0,j));
+		//	grid.CreateTile(Vector3(i,0,j));
 		}
 	}
 	
@@ -46,7 +46,7 @@ function generateDemoLevel(grid:Grid){
 	
 	grid.CreateIceBlock(Vector3(2,0,2));
 	
-	grid.CreateButton(Vector3(1,0,1));	
+	grid.CreateButton(Vector3(1,0,1),[Vector3(0,3,0), Vector3(0,4,0)],[]);	
 	setDestination(grid, Vector3(17, 0, 17));
 	
 	return;

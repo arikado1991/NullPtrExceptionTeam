@@ -24,27 +24,26 @@ class Character extends System.Object
 	function motionTarget( dir: Dir, grid:Grid):Vector3{
 		var desiredPos:Vector3 = spaceInFront(pos, dir);
 		
-		if (grid.hasStandable(desiredPos) ){
+		if (grid.hasStandable(desiredPos) )
 			return desiredPos; //Do not step up or down
-		}
+
 		
-		if (!grid.hasStandable(desiredPos) && grid.hasStandable(pos + Vector3.up) && 
-				!grid.hasBox(desiredPos + Vector3.up)){
+		if (grid.hasBox(desiredPos)  && grid.hasStandable(desiredPos + Vector3.up) && 
+				!grid.hasBox(desiredPos + Vector3.up))
 			return desiredPos + Vector3.up; //Step up
-		}
+
 		
 		if (!grid.hasStandable(desiredPos) && grid.hasStandable(desiredPos + Vector3.down) )
 			return desiredPos + Vector3.down; //Step down
 
-		
 		return pos;
 	}
 
-	function tryToPushIce( dir: Dir, grid: Grid) : boolean {
+	function tryToPushIce( dir: Dir, grid: Grid)  {
 		var target:Vector3 = spaceInFront(pos, dir);
-		if (!grid.hasIce(target)){
-			return false;
-		}else{
+		if (!grid.hasIce(target))
+			return;
+		
 			var ice:IceBlock = grid.getSpaceBox(target);
 			var obj:GameObject = ice.prefab;
 			Debug.Log(obj.GetComponent(IceBlockScript));
@@ -52,7 +51,8 @@ class Character extends System.Object
 			obj.SendMessage("setBox", ice);
 			obj.SendMessage("slide", dir);
 			Debug.Log("Ice block should be pushed");
-		}
+			yield WaitForSeconds(.4);
+		
 	}
 
 	function spaceInFront(pos: Vector3, dir:Dir):Vector3{
@@ -77,7 +77,7 @@ class Character extends System.Object
 	function move( dir: Dir, grid: Grid )
 	{	
 		Debug.LogError(prefab == null);
-		var fig: Transform = prefab.FindGameObjectWithTag("Player").transform;
+		var fig: Transform= prefab.FindGameObjectWithTag("Player").transform;
 		var time: float = 0.4;
 		
 		if (isMoving) {
@@ -107,7 +107,7 @@ class Character extends System.Object
 			
 		}
 		
-		tryToPushIce(dir, grid);
+		
 		var target:Vector3 = motionTarget(dir, grid);
 
 		if (target == pos){

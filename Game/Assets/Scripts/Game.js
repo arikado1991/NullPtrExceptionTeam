@@ -27,23 +27,28 @@ function getControlKey(){
 	var wait:float = 1;
 	if (processing) return;
 	
-	var p0:Vector3 =character.pos;
-	p0.y-=1;
+	var p:Vector3 =character.pos - Vector3.down;
+
 	if (character.onButton==true)
 	{
-		grid.getSpaceBox(p0).Unpushed();
+		var b: ButtonBox = grid.getSpaceBox(p);
+		b.Release();
 		character.onButton=false;
 	}
+	
+	if (Input.GetKeyUp('z')){
+		processing = true;
+		character.tryToPushIce(character.dir, grid);
+	}
+	
 	if (Input.GetKeyDown (KeyCode.UpArrow)){
 		processing = true;
 		StartCoroutine(character.move(Dir.UP, grid));
-		//processing = false;
 		move++;
 	}
 	else if (Input.GetKeyDown (KeyCode.DownArrow)){
 		processing = true;
 		StartCoroutine(character.move(Dir.DOWN, grid));
-		//processing = false;
 		move++;
 	}
 	else if (Input.GetKeyDown (KeyCode.LeftArrow)){
@@ -61,19 +66,19 @@ function getControlKey(){
 	
 	if (character.isMoving==false){
 	
-	var p:Vector3 =character.pos;
-	p.y -= 1;
-	if (p.y >= 0 && grid.getSpaceBox(p).destination==true)
+
+	if (p.y >= 0 && grid.getSpaceBox(p)!=null && grid.getSpaceBox(p).destination==true)
 	{	
 		//Debug.Log(character.pos.ToString());
 		state="win";
 	}
 	
-	if (p.y >= 0 && grid.getSpaceBox(p).button==true)
+	if (p.y >= 0 && grid.getSpaceBox(p)!=null && grid.getSpaceBox(p).destination==true)
 	{	
 		//Debug.LogError("PUSH!!!");
 		//Debug.Log(character.pos.ToString());
-		grid.getSpaceBox(p).getPushed();
+		var b2: ButtonBox = grid.getSpaceBox(p);
+		b2.getPushed();
 		character.onButton=true;
 	}
 	}

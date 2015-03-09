@@ -45,7 +45,6 @@ function roundPos(){
 function slide(dir:Dir){
 	Debug.Log("Ice trying to slide");
 	roundPos();
-	grid.CreateTile(transform.position);
 	while (canMove(dir)){
 		var start:Vector3 = transform.position;
 		var end:Vector3 = spaceInFront(start, dir);
