@@ -4,11 +4,13 @@ class ButtonBox extends Block{
 	var boxes2make: Vector3[];
 	var boxes2dest: Vector3[];
 	var pushed: boolean;
-	function ButtonBox(grid, boxes2make: Vector3[], boxes2dest: Vector3[]){
+	var elastic: boolean;
+	function ButtonBox(grid, boxes2make: Vector3[], boxes2dest: Vector3[], elastic: boolean){
 		super(grid);
-		type = BoxType.BUTTON;
+		bType = BoxType.BUTTON;
 		this.boxes2make = boxes2make;
 		this.boxes2dest = boxes2dest;
+		this.elastic = elastic;
 	}
 	
 	function getPushed(){
@@ -16,16 +18,14 @@ class ButtonBox extends Block{
 		if (!this.pushed)
 		{
 			this.pushed=true;
-			this.prefab.transform.GetChild(11).Translate(Vector3.up*-0.08); //TODO: make this less magic-number-y
+			this.prefab.FindGameObjectWithTag("button").transform.Translate(Vector3.up*-0.08); //TODO: make this less magic-number-y
 			//= Vector3(pos.x-0.6,pos.y+,pos.z-0.6);
 			
-			for (var i = 0; i < boxes2make.length; i++){
-					Debug.Log("Ding");
-					grid.CreateBlock(boxes2make[i]);
-
-//					GameObject.Destroy(grid.getSpaceBox(boxes2make[i]).prefab);
-				}
-			}
+			for (var i = 0; i < boxes2make.length; i++)
+				grid.CreateBlock(boxes2make[i]);
+			for (i = 0; i < boxes2dest.length; i++)
+				grid.Destroy(boxes2dest[i]);
+		}
 		
 		
 	}
@@ -34,9 +34,15 @@ class ButtonBox extends Block{
 	
 		if (this.pushed==true)
 		{
-			this.pushed=false;
-			//Debug.Log("Unpush");
-			this.prefab.transform.GetChild(11).Translate(Vector3.up*0.08);
+			this.pushed=true;
+			this.prefab.FindGameObjectWithTag("button").transform.Translate(Vector3.up*0.08);  //TODO: make this less magic-number-y
+			
+			if (!elastic) return;
+			
+			for (var i = 0; i < boxes2make.length; i++)
+				grid.Destroy(boxes2make[i]);
+			for (i = 0; i < boxes2dest.length; i++)
+				grid.CreateBlock(boxes2dest[i]);
 		}
 	}
 };

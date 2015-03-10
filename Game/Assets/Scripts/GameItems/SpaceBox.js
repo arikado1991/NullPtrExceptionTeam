@@ -1,14 +1,13 @@
 ﻿#pragma strict
-enum BoxType {BLOCK, ICE, BUTTON};
+enum SType {BOX, EDIBLE};
 class SpaceBox extends System.Object{
 
 	var state: boolean = false;
 	var grid: Grid;
 	var prefab: GameObject;
-
+	var type: SType;
 	var pos: Vector3;
 	var destination: boolean=false;
-	var type: BoxType;
 
 
 

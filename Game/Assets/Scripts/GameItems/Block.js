@@ -1,20 +1,21 @@
 ﻿#pragma strict
-
+enum BoxType {BLOCK, ICE, BUTTON};
 class Block extends SpaceBox{
-
+	var bType: BoxType;
 	function Block( grid: Grid){
 		super(grid);
-		type = BoxType.BLOCK;
+		type = SType.BOX;
+		bType = BoxType.BLOCK;
 	}
 
 	
 };
 
-class IceBlock extends SpaceBox{
+class IceBlock extends Block{
 
 	function IceBlock( grid: Grid){
 		super(grid);	
-		type = BoxType.ICE;
+		bType = BoxType.ICE;
 	}
 };
 

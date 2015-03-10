@@ -46,7 +46,7 @@ function generateDemoLevel(grid:Grid){
 	
 	grid.CreateIceBlock(Vector3(2,0,2));
 	
-	grid.CreateButton(Vector3(1,0,1),[Vector3(0,3,0), Vector3(0,4,0)],[]);	
+	grid.CreateButton(Vector3(1,0,1),[Vector3(0,3,0), Vector3(0,4,0)],[], false);	
 	setDestination(grid, Vector3(17, 0, 17));
 	
 	return;

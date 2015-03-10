@@ -80,8 +80,7 @@ class Grid extends System.Object{
 		var b: IceBlock = new IceBlock(this);
 		b.loadPos (pos);
 		b.loadPrefab(prefabs[3]);
-		if (grid[pos.x, pos.y, pos.z])
-			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
+		Destroy(Vector3(pos.x, pos.y, pos.z));
 		grid[pos.x, pos.y, pos.z] = b;
 		return b;
 	}
@@ -90,21 +89,27 @@ class Grid extends System.Object{
 		var b: Block = new Block(this);
 		b.loadPos (pos);
 		b.loadPrefab(prefabs[2]);
-		if (grid[pos.x, pos.y, pos.z])
-			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
+		Destroy(Vector3(pos.x, pos.y, pos.z));
 		grid[pos.x, pos.y, pos.z] = b;
 		return b;
 	}
 
 	
-	function CreateButton(pos: Vector3, boxes2make: Vector3[], boxes2dest:Vector3[]):Block{
-		var b: Block = new ButtonBox(this, boxes2make, boxes2dest);
+	function CreateButton(pos: Vector3, boxes2make: Vector3[], boxes2dest:Vector3[], e: boolean):Block{
+		var b: Block = new ButtonBox(this, boxes2make, boxes2dest, e );
 		b.loadPos (pos);
 		b.loadPrefab(prefabs[4]);
-		if (grid[pos.x, pos.y, pos.z])
-			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
+		Destroy(Vector3(pos.x, pos.y, pos.z));
 		grid[pos.x, pos.y, pos.z] = b;
 		return b;
+	}
+	
+	function Destroy(pos: Vector3){
+		var b: SpaceBox = getSpaceBox(pos);
+		if (b!= null){
+			b = null;
+			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
+		}
 	}
 
 };

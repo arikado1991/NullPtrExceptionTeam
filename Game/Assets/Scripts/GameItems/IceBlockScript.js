@@ -39,18 +39,26 @@ function roundPos(){
 
 function slide(dir:Dir){
 	Debug.Log("Ice trying to slide");
+	var oldPos: Vector3 = box.pos;
 	roundPos();
+	if (canMove(dir)) 
+		
 	while (canMove(dir)){
+		grid.grid[oldPos.x, oldPos.y, oldPos.z] = null;
+		
 		var start:Vector3 = transform.position;
 		var end:Vector3 = spaceInFront(start, dir);
 		for (var i = 0; i < 3; i++){
 			transform.position = Vector3.Slerp(start, end, (i+1)/3.0);
-			yield WaitForSeconds(.05);
+			yield WaitForSeconds(.02);
 		}
 		roundPos();
+		var p:Vector3 = transform.position;
+		grid.grid[p.x, p.y, p.z] = box;
 	}
-	roundPos();
-	var p:Vector3 = transform.position;
-	grid.grid[p.x, p.y, p.z] = box;
+
+
+	
+	
 
 }

@@ -13,7 +13,7 @@
 		}
 	}
 	
-	var button:Block = grid.CreateButton(Vector3(1,2,3), [Vector3(5,0,5), Vector3(5,1,5), Vector3(5,2,5)],[]);
+	var button:Block = grid.CreateButton(Vector3(1,2,3), [Vector3(5,0,5), Vector3(5,1,5), Vector3(5,2,5)],[], false);
 
 		
 	setDestination(grid, Vector3(8, 1, 8));
