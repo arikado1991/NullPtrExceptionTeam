@@ -7,13 +7,14 @@ var state:   		String= "inGame";
 var materialDest:   Material;
 var move:    		int;
 var level:          int;
-var customSkin: GUISkin;
+var customSkin: 	GUISkin;
+var setting: 		SettingScript;
 
-
-
+	
 function Awake () {
-	var setting:SettingScript= GameObject.FindGameObjectWithTag("setting").GetComponent("SettingScript");
-	AllPrefabs = setting.FetchPrefabs();
+	var stscript:SettingScript= GameObject.FindGameObjectWithTag("setting").GetComponent("SettingScript");
+
+	AllPrefabs = stscript.FetchPrefabs();
 	state="inGame";
 	move=0;
 	Application.targetFrameRate = 50;
@@ -21,6 +22,7 @@ function Awake () {
 	this.BroadcastMessage("GenerateLevel", grid);
 	character  = grid.character;
 }
+
 
 
 function getControlKey(){
