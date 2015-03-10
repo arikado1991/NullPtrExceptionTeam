@@ -18,9 +18,8 @@ class ButtonBox extends Block{
 		if (!this.pushed)
 		{
 			this.pushed=true;
-			this.prefab.FindGameObjectWithTag("button").transform.Translate(Vector3.up*-0.08); //TODO: make this less magic-number-y
-			//= Vector3(pos.x-0.6,pos.y+,pos.z-0.6);
-			
+			this.prefab.FindGameObjectWithTag("button").transform.Translate(Vector3.up*-0.08); 
+			//TODO: make this less magic-number-y
 			for (var i = 0; i < boxes2make.length; i++)
 				grid.CreateBlock(boxes2make[i]);
 			for (i = 0; i < boxes2dest.length; i++)
@@ -34,7 +33,7 @@ class ButtonBox extends Block{
 	
 		if (this.pushed==true)
 		{
-			this.pushed=true;
+			this.pushed=false;
 			this.prefab.FindGameObjectWithTag("button").transform.Translate(Vector3.up*0.08);  //TODO: make this less magic-number-y
 			
 			if (!elastic) return;

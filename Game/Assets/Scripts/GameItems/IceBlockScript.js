@@ -1,11 +1,15 @@
 ﻿#pragma strict
 
 var grid:Grid;
+var oldPos: Vector3;
+
 function setGrid(g:Grid){grid = g;}
 
-
 var box:IceBlock;
-function setBox(b:IceBlock){box = b;}
+function setBox(b:IceBlock){
+	box = b; 
+	oldPos = transform.position;
+}
 
 function spaceInFront(pos: Vector3, dir:Dir):Vector3{
 	
@@ -39,10 +43,8 @@ function roundPos(){
 
 function slide(dir:Dir){
 	Debug.Log("Ice trying to slide");
-	var oldPos: Vector3 = box.pos;
 	roundPos();
-	if (canMove(dir)) 
-		
+	oldPos = transform.position;	
 	while (canMove(dir)){
 		grid.grid[oldPos.x, oldPos.y, oldPos.z] = null;
 		
@@ -55,6 +57,7 @@ function slide(dir:Dir){
 		roundPos();
 		var p:Vector3 = transform.position;
 		grid.grid[p.x, p.y, p.z] = box;
+		oldPos = p;
 	}
 
 

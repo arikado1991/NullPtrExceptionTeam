@@ -12,6 +12,7 @@ function GenerateLevel(grid:Grid){
 	grid.BuildRect(Vector3(0, 0, 7), Vector3(9,0,9),"box");
 	
 	grid.SpawnCharacter(Vector3(0,9,0));
+	grid.CreateDestination(Vector3(9,1,9));
 		
 	//setDestination(grid, Vector3(9, 0, 9));
 

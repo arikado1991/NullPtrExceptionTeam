@@ -104,6 +104,14 @@ class Grid extends System.Object{
 		return b;
 	}
 	
+	function CreateDestination(pos:Vector3){
+		var d: Edible = new Edible(this,EdibleType.DEST);
+		d.loadPos (pos);
+		d.loadPrefab(prefabs[6]);
+		Destroy(Vector3(pos.x, pos.y, pos.z));
+		grid[pos.x, pos.y, pos.z] = d;
+	}
+	
 	function Destroy(pos: Vector3){
 		var b: SpaceBox = getSpaceBox(pos);
 		if (b!= null){
