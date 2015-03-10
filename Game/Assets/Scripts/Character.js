@@ -29,7 +29,7 @@ class Character extends System.Object
 
 		
 		if (grid.hasBox(desiredPos)  && grid.hasStandable(desiredPos + Vector3.up) && 
-				!grid.hasBox(desiredPos + Vector3.up))
+				!grid.hasBox(pos + Vector3.up))
 			return desiredPos + Vector3.up; //Step up
 
 		
