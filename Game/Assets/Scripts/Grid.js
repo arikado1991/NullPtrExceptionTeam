@@ -115,8 +115,8 @@ class Grid extends System.Object{
 	function Destroy(pos: Vector3){
 		var b: SpaceBox = getSpaceBox(pos);
 		if (b!= null){
-			grid[pos.x,pos.y,pos.z] = null;
 			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
+			grid[pos.x,pos.y,pos.z] = null;
 		}
 	}
 

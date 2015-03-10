@@ -9,7 +9,7 @@ function GenerateLevel(grid:Grid){
 	grid.BuildRect(Vector3(0, 0, 0), Vector3(9,0,5),"box");
 	grid.BuildRect(Vector3(0, 1, 4), Vector3(4,2,4), "box");
 	grid.CreateIceBlock(Vector3(1,1,3));
-	grid.CreateButton(Vector3(4, 1, 3), [Vector3(5,1,6),Vector3(5,1,5),Vector3(5,1,7)],[], false);
+	grid.CreateButton(Vector3(4, 1, 3), [Vector3(5,1,6),Vector3(5,1,5),Vector3(5,1,7)],[], true);
 	grid.BuildRect(Vector3(0, 0, 7), Vector3(9,0,9),"box");
 	
 	grid.SpawnCharacter(Vector3(0,9,0));
