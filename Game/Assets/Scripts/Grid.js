@@ -1,5 +1,5 @@
 ﻿#pragma strict
-enum GridState {IDLE, INGAME};
+enum GridState {IDLE, INGAME, FINISHED};
 class Grid extends System.Object{
 	var prefabs: GameObject[];
 	var grid: SpaceBox[,,];

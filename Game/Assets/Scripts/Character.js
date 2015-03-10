@@ -120,7 +120,12 @@ class Character extends System.Object
 			yield;
 		}
 		pos = endPos;
-		
+		var yum: SpaceBox = grid.getSpaceBox(pos);
+		if (yum != null && yum.type == SType.EDIBLE)
+		{
+			if((yum as Edible).eType == EdibleType.DEST)
+				grid.state = GridState.FINISHED;
+		}
 		isMoving = false;
 		below = checkBelow(grid);
 		

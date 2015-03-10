@@ -38,7 +38,6 @@ function getControlKey(){
 	
 	if (Input.GetKeyUp('z')){
 		processing = true;
-		
 		character.tryToPushIce(character.dir, grid);Debug.Log('z');
 	}
 	
@@ -55,28 +54,18 @@ function getControlKey(){
 	else if (Input.GetKeyDown (KeyCode.LeftArrow)){
 		processing = true;
 		StartCoroutine(character.move(Dir.LEFT, grid));
-		//processing = false;
 		move++;
 	}
 	else if (Input.GetKeyDown (KeyCode.RightArrow)){
 		processing = true;
 		StartCoroutine(character.move(Dir.RIGHT, grid));
-		//processing = false;
 		move++;
 	}
-	
-	if (character.isMoving==false){
-	
-
-		if (p.y >= 0 && grid.getSpaceBox(p)!=null && grid.getSpaceBox(p).destination==true)
-		{	
-			//Debug.Log(character.pos.ToString());
-			state="win";
-		}
-	
-
-	}
+	/* WON!*/
 	processing = false;
+	if (grid.state == GridState.FINISHED)
+		state = "won";
+
 	
 }
 function Update () {
@@ -94,7 +83,7 @@ function OnGUI()
 	{
 		//GUI.Box(Rect(10,10,200,50), "Move: "+move);
 	}
-	if (state == "win")
+	if (state == "won")
 	{
 
 		customSkin.box.fontSize = Screen.height*.1;
