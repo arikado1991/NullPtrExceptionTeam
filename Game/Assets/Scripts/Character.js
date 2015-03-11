@@ -12,6 +12,7 @@ class Character extends System.Object
 	var onButton:   boolean;
 	@HideInInspector
 	var isMoving:boolean = false;
+	var willJump:boolean = false;
 	function Character(pos: Vector3, prefab:GameObject){
 		this.pos =  pos;
 		state = CharState.IDLE;
@@ -29,13 +30,16 @@ class Character extends System.Object
 
 		
 		if (grid.hasBox(desiredPos)  && grid.hasStandable(desiredPos + Vector3.up) && 
-				!grid.hasBox(pos + Vector3.up))
-			return desiredPos + Vector3.up; //Step up
+				!grid.hasBox(pos + Vector3.up)){
+	
+			willJump = true;
+			return desiredPos + Vector3.up;} //Step up}
 
 		
 		if (!grid.hasStandable(desiredPos) && grid.hasStandable(desiredPos + Vector3.down) )
-			return desiredPos + Vector3.down; //Step down
-
+		{	willJump = true;
+			return desiredPos + Vector3.down;} //Step down}
+		Debug.Log("How");
 		return pos;
 	}
 
@@ -77,11 +81,10 @@ class Character extends System.Object
 	}
 	function move( dir: Dir, grid: Grid )
 	{	
-		Debug.LogError(prefab == null);
-		var fig: Transform= prefab.FindGameObjectWithTag("Player").transform;
+		var fig: Transform= prefab.FindGameObjectWithTag("Rufus").transform;
 		var time: float = 0.4;
 		var below: SpaceBox;
-		if (isMoving) return;
+		if (isMoving ) {;return;}
 		if (this.dir != dir){
 			this.dir = dir;
 			var finalR: float;
@@ -103,7 +106,7 @@ class Character extends System.Object
 			this.dirction=finalR;
 			return;
 		}
-		
+		Debug.Log("Got here");
 		var target:Vector3 = motionTarget(dir, grid);
 		below = checkBelow(grid);
 		if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
@@ -115,10 +118,13 @@ class Character extends System.Object
 		var startTime:float = Time.time;
 		var startPos:Vector3 = pos;
 		var endPos:Vector3 = target;
+		if(willJump) { prefab.BroadcastMessage("Jump");}
+		else prefab.BroadcastMessage("Walk");
 		while (Time.time < startTime + time){
+			
 			prefab.transform.position = Vector3.Slerp(startPos, endPos, (Time.time - startTime)/time);
 			yield;
-		}
+		}prefab.BroadcastMessage("Stop");
 		pos = endPos;
 		var yum: SpaceBox = grid.getSpaceBox(pos);
 		if (yum != null && yum.type == SType.EDIBLE)
@@ -126,12 +132,16 @@ class Character extends System.Object
 			if((yum as Edible).eType == EdibleType.DEST)
 				grid.state = GridState.FINISHED;
 		}
-		isMoving = false;
+		
+		
+//		Debug.Log(endPos.ToString());
 		below = checkBelow(grid);
 		
 		if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
 			(below as ButtonBox).getPushed();
 		}
+		isMoving = false;
+		willJump = false;
 		
 		return;
 	}

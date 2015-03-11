@@ -1,0 +1,369 @@
+fileFormatVersion: 2
+guid: 01f21bdfc54c248d5a3daac65ed74850
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: joint1
+    100004: joint10
+    100006: joint11
+    100008: joint13
+    100010: joint14
+    100012: joint15
+    100014: joint16
+    100016: joint18
+    100018: joint19
+    100020: joint2
+    100022: joint20
+    100024: joint22
+    100026: joint23
+    100028: joint24
+    100030: joint3
+    100032: joint4
+    100034: joint5
+    100036: joint6
+    100038: joint8
+    100040: joint9
+    100042: LeftArm
+    100044: LeftLeg
+    100046: polySurface1
+    100048: polySurface1_MeshPart0
+    100050: polySurface1_MeshPart1
+    100052: RightArm
+    100054: RightLeg
+    400000: //RootNode
+    400002: joint1
+    400004: joint10
+    400006: joint11
+    400008: joint13
+    400010: joint14
+    400012: joint15
+    400014: joint16
+    400016: joint18
+    400018: joint19
+    400020: joint2
+    400022: joint20
+    400024: joint22
+    400026: joint23
+    400028: joint24
+    400030: joint3
+    400032: joint4
+    400034: joint5
+    400036: joint6
+    400038: joint8
+    400040: joint9
+    400042: LeftArm
+    400044: LeftLeg
+    400046: polySurface1
+    400048: polySurface1_MeshPart0
+    400050: polySurface1_MeshPart1
+    400052: RightArm
+    400054: RightLeg
+    4300000: polySurface1_MeshPart0
+    4300002: polySurface1_MeshPart1
+    7400000: Walking
+    7400002: Jump
+    7400004: Idle
+    9500000: //RootNode
+    13700000: polySurface1_MeshPart0
+    13700002: polySurface1_MeshPart1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Walking
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: joint1/joint2/joint3/joint4
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18/joint19
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18/joint19/joint20
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22/joint23
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22/joint23/joint24
+        weight: 1
+      - path: joint1/LeftLeg
+        weight: 1
+      - path: joint1/LeftLeg/joint8
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9/joint10
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9/joint10/joint11
+        weight: 1
+      - path: joint1/RightLeg
+        weight: 1
+      - path: joint1/RightLeg/joint13
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14/joint15
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14/joint15/joint16
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: polySurface1/polySurface1_MeshPart0
+        weight: 1
+      - path: polySurface1/polySurface1_MeshPart1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Jump
+      takeName: Take 001
+      firstFrame: 20
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: joint1/joint2/joint3/joint4
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18/joint19
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18/joint19/joint20
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22/joint23
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22/joint23/joint24
+        weight: 1
+      - path: joint1/LeftLeg
+        weight: 1
+      - path: joint1/LeftLeg/joint8
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9/joint10
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9/joint10/joint11
+        weight: 1
+      - path: joint1/RightLeg
+        weight: 1
+      - path: joint1/RightLeg/joint13
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14/joint15
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14/joint15/joint16
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: polySurface1/polySurface1_MeshPart0
+        weight: 1
+      - path: polySurface1/polySurface1_MeshPart1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 50
+      lastFrame: 55
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: joint1/joint2/joint3/joint4
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18/joint19
+        weight: 1
+      - path: joint1/joint2/joint3/LeftArm/joint18/joint19/joint20
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22/joint23
+        weight: 1
+      - path: joint1/joint2/joint3/RightArm/joint22/joint23/joint24
+        weight: 1
+      - path: joint1/LeftLeg
+        weight: 1
+      - path: joint1/LeftLeg/joint8
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9/joint10
+        weight: 1
+      - path: joint1/LeftLeg/joint8/joint9/joint10/joint11
+        weight: 1
+      - path: joint1/RightLeg
+        weight: 1
+      - path: joint1/RightLeg/joint13
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14/joint15
+        weight: 1
+      - path: joint1/RightLeg/joint13/joint14/joint15/joint16
+        weight: 1
+      - path: polySurface1
+        weight: 1
+      - path: polySurface1/polySurface1_MeshPart0
+        weight: 1
+      - path: polySurface1/polySurface1_MeshPart1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
