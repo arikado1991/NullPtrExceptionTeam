@@ -31,7 +31,6 @@ function Stabilize(){
 }
 
 function Update(){
-	Debug.Log(Origin.ToString());
 	if (isShaking){
 		transform.localPosition =  Origin+ Vector3(
 		Random.Range(0,20)/100.0,Random.Range(0,20)/100.0,Random.Range(0,20)/100.0);

@@ -140,7 +140,7 @@ class Character extends System.Object
 					grid.state = GridState.FINISHED;
 			}
 			below = checkBelow(grid);
-			
+			Debug.Log(below.GetType());
 			if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
 				(below as ButtonBox).getPushed();
 			}

@@ -9,12 +9,14 @@ var move:    		int;
 var level:          int;
 var customSkin: 	GUISkin;
 var setting: 		SettingScript;
+var timeLimit:		float[];
 
 	
 function Awake () {
 	var stscript:SettingScript= GameObject.FindGameObjectWithTag("setting").GetComponent("SettingScript");
 
 	AllPrefabs = stscript.FetchPrefabs();
+	timeLimit = stscript.FetchTimeLimits();
 	state="inGame";
 	move=0;
 	Application.targetFrameRate = 50;
@@ -81,9 +83,12 @@ function Update () {
 
 function OnGUI()
 {
+	
 	if(state == "inGame")
 	{
-		//GUI.Box(Rect(10,10,200,50), "Move: "+move);
+		if (GUI.Button(Rect(Screen.height*.02, Screen.height*.02,Screen.height*.1, Screen.height*.1), "Retry")){
+		
+		}
 	}
 	if (state == "won")
 	{
