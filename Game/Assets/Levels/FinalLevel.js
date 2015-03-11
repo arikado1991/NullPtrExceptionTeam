@@ -16,13 +16,12 @@ function GenerateLevel(grid:Grid){
 		
 	}
 	grid.BuildRect(Vector3(i-1,j,j+5), Vector3(i+1, j,j+7),"box");
-	var bridge: Vector3[] = new Vector3[14];
-	for (i = 0; i < 7; i++)
+	var bridge: Vector3[] = new Vector3[10];
+	for (i = 0; i < 10; i++)
 		bridge[i] = Vector3(i+3,j,j+5);
-	grid.CreateButton(Vector3(i+1,j+1,j+6), bridge.Clone(),[], false);
-	for (j = 0; j < 7; j++)
-		bridge[i] = Vector3(10,j,j);
-//		bridge[i+7] = Vector3(i+1,j+1,j+6)
+	Debug.Log(Vector3(i+2,j,j+5).ToString());
+	grid.CreateButton(Vector3(i+3,j+1,j+6), bridge.Clone(),[], false);
+	
 	grid.BuildRect(Vector3(2,j,5), Vector3(4, j,7),"box");	
 	
 //		grid.CreateButton(Vector3(13,0,6))
