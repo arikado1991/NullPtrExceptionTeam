@@ -40,7 +40,8 @@ function getControlKey(){
 	
 	if (Input.GetKeyUp('z')){
 		processing = true;
-		character.tryToPushIce(character.dir, grid);Debug.Log('z');
+		character.tryToPushIce(character.dir, grid);
+		//Debug.Log('z');
 	}
 	
 	if (Input.GetKeyDown (KeyCode.UpArrow)){

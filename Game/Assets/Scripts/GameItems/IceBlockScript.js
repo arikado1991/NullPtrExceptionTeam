@@ -65,6 +65,7 @@ function slide(dir:Dir){
 			//Debug.Log(topBlocks[1].prefab.transform.position);
 			
 			for (var q=1;q<j;q++){
+			grid.grid[oldPos.x, oldPos.y+q, oldPos.z]=null;
 			topBlocks[q-1].prefab.transform.position= Vector3.Slerp(start+Vector3.up*q, end+Vector2.up*q, (i+1)/3.0);
 			}
 			yield WaitForSeconds(.02);
