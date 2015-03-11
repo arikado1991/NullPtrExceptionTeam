@@ -1,5 +1,5 @@
 ﻿#pragma strict
-enum BoxType {BLOCK, ICE, BUTTON};
+enum BoxType {BLOCK, ICE, BUTTON, TRAP};
 class Block extends SpaceBox{
 	var bType: BoxType;
 	function Block( grid: Grid){
@@ -7,8 +7,6 @@ class Block extends SpaceBox{
 		type = SType.BOX;
 		bType = BoxType.BLOCK;
 	}
-
-	
 };
 
 class IceBlock extends Block{
@@ -19,3 +17,13 @@ class IceBlock extends Block{
 	}
 };
 
+class TrapBox extends Block{
+	function TrapBox(grid){
+		super(grid);
+		bType = BoxType.TRAP;
+	}
+	
+	function Collapse(){
+		grid.Destroy(prefab.transform.position);
+	}
+}

@@ -1,4 +1,4 @@
-﻿#pragma strict
+#pragma strict
 enum CharState {IDLE, MOVING};
 enum Dir {UP, DOWN, LEFT, RIGHT};
 
@@ -39,7 +39,7 @@ class Character extends System.Object
 		if (!grid.hasStandable(desiredPos) && grid.hasStandable(desiredPos + Vector3.down) )
 		{	willJump = true;
 			return desiredPos + Vector3.down;} //Step down}
-		//Debug.Log("How");
+
 		return pos;
 	}
 
@@ -105,7 +105,6 @@ class Character extends System.Object
 			}
 			
 			fig.transform.RotateAround(fig.transform.position, Vector3.up,90*(this.dirction-finalR));
-			//animation possible here
 			this.dirction=finalR;
 			return;
 		}
@@ -126,7 +125,7 @@ class Character extends System.Object
 		
 		var target:Vector3 = motionTarget(dir, grid);
 		isMoving = true;
-		
+	
 		var startTime:float = Time.time;
 		var startPos:Vector3 = pos;
 		var endPos:Vector3 = target;
@@ -172,6 +171,8 @@ class Character extends System.Object
 		
 		if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
 			(below as ButtonBox).getPushed();
+			prefab.FindGameObjectWithTag("MainCamera").BroadcastMessage("SwitchView",grid.hasBox(pos+Vector3.back));
+
 		}
 		isMoving = false;
 		willJump = false;

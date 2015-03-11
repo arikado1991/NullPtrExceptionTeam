@@ -103,6 +103,15 @@ class Grid extends System.Object{
 		grid[pos.x, pos.y, pos.z] = b;
 		return b;
 	}
+	function CreateTrap(pos:Vector3){
+		var t: TrapBox = new TrapBox(this);
+		t.loadPos (pos);
+		t.loadPrefab(prefabs[2]);
+		Destroy(Vector3(pos.x, pos.y, pos.z));
+		grid[pos.x, pos.y, pos.z] = t;
+	}
+	
+	
 	
 	function CreateDestination(pos:Vector3){
 		var d: Edible = new Edible(this,EdibleType.DEST);
@@ -116,11 +125,24 @@ class Grid extends System.Object{
 		var b: SpaceBox = getSpaceBox(pos);
 		if (b!= null){
 			GameObject.Destroy(grid[pos.x, pos.y, pos.z].prefab);
-			grid[pos.x,pos.y,pos.z] = null;
+			grid[pos.x, pos.y, pos.z] = null;
 		}
 	}
+	
+	function CreatePizza(pos: Vector3){
+		var d: Edible = new Edible(this,EdibleType.DEST);
+		d.loadPos (pos);
+		d.loadPrefab(prefabs[5]);
+		Destroy(Vector3(pos.x, pos.y, pos.z));
+		grid[pos.x, pos.y, pos.z] = d;
+	}
+	
 
+	function LoadButton(pos: Vector3, newButton: ButtonBox){
+		grid[pos.x, pos.y, pos.z] = newButton;
+	}
 };
+	
 
 
 
