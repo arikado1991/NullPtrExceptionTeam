@@ -130,14 +130,27 @@ class Character extends System.Object
 		var startTime:float = Time.time;
 		var startPos:Vector3 = pos;
 		var endPos:Vector3 = target;
-		if(willJump) { prefab.BroadcastMessage("Jump"); yield (WaitForSeconds(.3));}
+		if(willJump) { 
+			prefab.BroadcastMessage("Jump");
+			//Debug.Log(startPos); 
+			//Debug.LogError(endPos); 
+			yield (WaitForSeconds(.1));
+		}
 		else prefab.BroadcastMessage("Walk");
-;
-		while (Time.time < startTime + time){
+		
+		/*while (Time.time < startTime + time){
 			
 			prefab.transform.position = Vector3.Slerp(startPos, endPos, (Time.time - startTime)/time);
 			yield;
-		}prefab.BroadcastMessage("Stop");
+		}*/
+		
+		for (var i = 0; i < 3; i++){
+			prefab.transform.position = Vector3.Slerp(startPos, endPos, (i+1)/3);
+			yield WaitForSeconds(.02);
+			//yield;
+		}
+		
+		prefab.BroadcastMessage("Stop");
 		pos = endPos;
 		var yum: SpaceBox = grid.getSpaceBox(pos);
 		if (yum != null && yum.type == SType.EDIBLE)
@@ -162,7 +175,7 @@ class Character extends System.Object
 		}
 		isMoving = false;
 		willJump = false;
-		
+		//Debug.LogError(prefab.transform.position); 
 		return;
 	}
 
