@@ -127,6 +127,7 @@ class Character extends System.Object
 			yield;
 		}prefab.BroadcastMessage("Stop");
 		pos = endPos;
+		prefab.transform.position = pos;
 		var yum: SpaceBox = grid.getSpaceBox(pos);
 		if (yum != null && yum.type == SType.EDIBLE)
 		{
