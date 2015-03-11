@@ -11,12 +11,13 @@ var customSkin: 	GUISkin;
 var setting: 		SettingScript;
 var timeLimit:		float[];
 
-	
-function Awake () {
-	var stscript:SettingScript= GameObject.FindGameObjectWithTag("setting").GetComponent("SettingScript");
 
+function Awake () {
+
+	var stscript:SettingScript= GameObject.FindGameObjectWithTag("setting").GetComponent("SettingScript");
+	
 	AllPrefabs = stscript.FetchPrefabs();
-	timeLimit = stscript.FetchTimeLimits();
+//	timeLimit = stscript.FetchTimeLimits();
 	state="inGame";
 	move=0;
 	Application.targetFrameRate = 50;
@@ -87,7 +88,7 @@ function OnGUI()
 	if(state == "inGame")
 	{
 		if (GUI.Button(Rect(Screen.height*.02, Screen.height*.02,Screen.height*.1, Screen.height*.1), "Retry")){
-		
+			Application.LoadLevel("Level "+ (level).ToString());
 		}
 	}
 	if (state == "won")

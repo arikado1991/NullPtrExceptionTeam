@@ -54,7 +54,6 @@ class Character extends System.Object
 		obj.SendMessage("setGrid", grid);
 		obj.SendMessage("setBox", b);
 		obj.SendMessage("slide", dir);
-		//Debug.Log("Ice block should be pushed");
 		
 		
 	}
@@ -63,9 +62,7 @@ class Character extends System.Object
 		
 		var desiredPos:Vector3 = Vector3(pos.x, pos.y, pos.z);
 		switch (dir){
-			case Dir.UP:
-				desiredPos += Vector3.forward;
-				break;
+			case Dir.UP: desiredPos += Vector3.forward;	break;
 			case dir.DOWN:
 				desiredPos += Vector3.back;
 				break;
@@ -108,24 +105,26 @@ class Character extends System.Object
 		}
 
 		var target:Vector3 = motionTarget(dir, grid);
-		below = checkBelow(grid);
-		if (below.type == SType.BOX){
-			if ( (below as Block).bType == BoxType.BUTTON)
-				(below as ButtonBox).Release();
-			else if((below as Block).bType == BoxType.TRAP)
-				(below as TrapBox).Collapse();
-		}
-		
-		isMoving = true;
 	
 		var startTime:float = Time.time;
 		var startPos:Vector3 = pos;
 		var endPos:Vector3 = target;
-		if(pos!=endPos) {
-		if(willJump) { 
-			prefab.BroadcastMessage("Jump"); 
-			yield (WaitForSeconds(.3));}
-		else prefab.BroadcastMessage("Walk");
+		if (endPos!= startPos)
+		{
+			below = checkBelow(grid);
+			if (below.type == SType.BOX){
+				if ( (below as Block).bType == BoxType.BUTTON)
+					(below as ButtonBox).Release();
+				else if((below as Block).bType == BoxType.TRAP)
+					(below as TrapBox).Collapse();
+		}
+		
+		isMoving = true;
+			if(willJump) { 
+				prefab.BroadcastMessage("Jump"); 
+				yield (WaitForSeconds(.3));
+			}
+			else prefab.BroadcastMessage("Walk");
 			while (Time.time < startTime + time){
 				
 				prefab.transform.position = Vector3.Slerp(startPos, endPos, (Time.time - startTime)/time);
@@ -140,7 +139,6 @@ class Character extends System.Object
 					grid.state = GridState.FINISHED;
 			}
 			below = checkBelow(grid);
-			Debug.Log(below.GetType());
 			if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
 				(below as ButtonBox).getPushed();
 			}

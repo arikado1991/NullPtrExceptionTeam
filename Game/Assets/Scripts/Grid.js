@@ -47,8 +47,8 @@ class Grid extends System.Object{
 	
 	function hasBox(pos:Vector3):boolean{
 		var sp: SpaceBox = getSpaceBox(pos);
-		if (sp == null) return false;
-		return sp.GetType() == typeof (Block) || sp.GetType().IsSubclassOf(typeof(Block));
+		if (!sp) return false;
+		return sp.type == SType.BOX;
 		
 	}
 	
