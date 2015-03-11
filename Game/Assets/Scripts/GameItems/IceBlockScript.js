@@ -41,22 +41,43 @@ function roundPos(){
 	
 }
 
+
 function slide(dir:Dir){
 	//Debug.Log("Ice trying to slide");
 	roundPos();
-	oldPos = transform.position;	
+	oldPos = transform.position;
+	var j:int=1;
+	var topBlocks = new IceBlock[10];
+	while (grid.hasIce(Vector3(oldPos.x, oldPos.y+j, oldPos.z)))
+		{
+		//Debug.Log("ICEEEEEEE!");
+		//Debug.Log(Vector3(oldPos.x, oldPos.y+1, oldPos.z));
+		var b: IceBlock = grid.getSpaceBox(Vector3(oldPos.x, oldPos.y+j, oldPos.z));
+		topBlocks[j-1]=b;
+		j+=1;
+		}	
 	while (canMove(dir)){
 		grid.grid[oldPos.x, oldPos.y, oldPos.z] = null;
-		
 		var start:Vector3 = transform.position;
 		var end:Vector3 = spaceInFront(start, dir);
 		for (var i = 0; i < 3; i++){
 			transform.position = Vector3.Slerp(start, end, (i+1)/3.0);
+			//Debug.Log(topBlocks[1].prefab.transform.position);
+			
+			for (var q=1;q<j;q++){
+			topBlocks[q-1].prefab.transform.position= Vector3.Slerp(start+Vector3.up*q, end+Vector2.up*q, (i+1)/3.0);
+			}
 			yield WaitForSeconds(.02);
 		}
+		
+		
+		
 		roundPos();
 		var p:Vector3 = transform.position;
 		grid.grid[p.x, p.y, p.z] = box;
+		for ( q=1;q<j;q++){
+		grid.grid[p.x, p.y+q, p.z] = topBlocks[q-1];
+		}
 		oldPos = p;
 	}
 

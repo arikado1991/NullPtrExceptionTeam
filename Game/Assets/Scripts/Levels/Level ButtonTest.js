@@ -19,9 +19,3 @@
 	grid.CreateDestination(Vector3(8, 2, 8));
 	
 }
-var materialDest:   Material;
-
-function setDestination(grid:Grid, location:Vector3){
-	grid.getSpaceBox(location).destination=true;
-	grid.getSpaceBox(location).prefab.transform.GetChild(7).renderer.material=materialDest;
-}

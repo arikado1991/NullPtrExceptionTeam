@@ -1,6 +1,4 @@
-﻿var materialDest:   Material;
-
-function GenerateLevel(grid:Grid){
+﻿function GenerateLevel(grid:Grid){
 	var block: SpaceBox;
 	var pos: Vector3;
 	
@@ -31,10 +29,4 @@ function GenerateLevel(grid:Grid){
 	
 	grid.SpawnCharacter(Vector3(1,5,1));
 	grid.CreateDestination(Vector3(1, 5, 13));
-}
-
-
-function setDestination(grid:Grid, location:Vector3){
-	grid.getSpaceBox(location).destination=true;
-	grid.getSpaceBox(location).prefab.transform.GetChild(7).renderer.material=materialDest;
 }

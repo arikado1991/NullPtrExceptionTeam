@@ -56,7 +56,7 @@ class Grid extends System.Object{
 
 		var box = getSpaceBox(pos);
 		if (box && box.GetType() == typeof (IceBlock)){
-			Debug.Log("pos="+pos.ToString()+"type="+box.GetType());
+			//Debug.Log("pos="+pos.ToString()+"type="+box.GetType());
 			return true;
 		}
 		return false;
