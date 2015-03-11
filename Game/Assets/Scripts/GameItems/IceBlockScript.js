@@ -42,7 +42,7 @@ function roundPos(){
 }
 
 function slide(dir:Dir){
-	Debug.Log("Ice trying to slide");
+	//Debug.Log("Ice trying to slide");
 	roundPos();
 	oldPos = transform.position;	
 	while (canMove(dir)){

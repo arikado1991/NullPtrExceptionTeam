@@ -39,7 +39,7 @@ class Character extends System.Object
 		if (!grid.hasStandable(desiredPos) && grid.hasStandable(desiredPos + Vector3.down) )
 		{	willJump = true;
 			return desiredPos + Vector3.down;} //Step down}
-		Debug.Log("How");
+		//Debug.Log("How");
 		return pos;
 	}
 
@@ -106,7 +106,7 @@ class Character extends System.Object
 			this.dirction=finalR;
 			return;
 		}
-		Debug.Log("Got here");
+		//Debug.Log("Got here");
 		var target:Vector3 = motionTarget(dir, grid);
 		below = checkBelow(grid);
 		if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
