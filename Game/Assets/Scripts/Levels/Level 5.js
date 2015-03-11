@@ -1,43 +1,55 @@
-﻿/*var materialDest:   Material;
-
-function generateLevel4(grid:Grid){
+﻿function GenerateLevel(grid:Grid){
 	var block: SpaceBox;
 	var pos: Vector3;
 	
-	for (var i: int=0; i<15; i++){
-		for (var j: int=0;j<15;j++){
-			grid.CreateTile(Vector3(i,0,j));
+	grid.SetGrid(10,20,10);
+	for (var i: int=0; i<10; i++){
+		for (var j: int=0;j<10;j++){
 			
-			if (j<6 && (i==5 || i==6 || i==7 ||i==8))
-			{
-				if(j==3 && i!=8){
-				grid.CreateBlock(Vector3(i,3,j));}
-				continue;
-			}
+			
 			grid.CreateBlock(Vector3(i,0,j));
 			grid.CreateBlock(Vector3(i,1,j));
-			
-			if (j>=6 && i<=10)
-			{
-				grid.CreateBlock(Vector3(i,2,j));
-				grid.CreateBlock(Vector3(i,3,j));
-				grid.CreateBlock(Vector3(i,4,j));
-			}
-			
+			grid.CreateBlock(Vector3(i,2,j));
+			grid.CreateBlock(Vector3(i,3,j));
 		}
 	}
-	grid.CreateBlock(Vector3(8,2,3));
-	grid.CreateIceBlock(Vector3(1, 2, 3));
-	var button:Block=grid.CreateButton(Vector3(13,1,1));
-	button.buttonCreateBlocks = true;
-	button.blocksToMake = [Vector3(11,2,7),Vector3(11,3,8),Vector3(11,4,9)];
 	
-	setDestination(grid, Vector3(1, 4, 13));
+	grid.BuildRect(Vector3(0, 4, 4), Vector3(5,6,9),"box");
+	grid.BuildRect(Vector3(0, 6, 7), Vector3(2,8,9),"box");
+	
+	
+	grid.BuildRect(Vector3(0, 4, 0), Vector3(5,4,3),"box");
+	grid.BuildRect(Vector3(0, 5, 0), Vector3(3,5,3),"box");
+	grid.BuildRect(Vector3(0, 6, 0), Vector3(1,6,3),"box");
+	grid.CreateBlock(Vector3(0,9,9));
+	
+	grid.CreateIceBlock(Vector3(8, 4, 1));
+	grid.CreateIceBlock(Vector3(8, 5, 1));
+	grid.CreateIceBlock(Vector3(8, 6, 1));
+	grid.CreateIceBlock(Vector3(8, 7, 1));
+	
+	
+	var Block1=[Vector3(6,4,4), Vector3(7,4,4),Vector3(8,4,4),Vector3(9,4,4),Vector3(6,5,4), Vector3(7,5,4),Vector3(8,5,4),Vector3(9,5,4),Vector3(6,6,4), Vector3(7,6,4),Vector3(8,6,4),Vector3(9,6,4)];
+	var Block2=[Vector3(6,4,6), Vector3(7,4,6),Vector3(8,4,6),Vector3(9,4,6),Vector3(6,5,6), Vector3(7,5,6),Vector3(8,5,6),Vector3(9,5,6),Vector3(6,6,6), Vector3(7,6,6),Vector3(8,6,6),Vector3(9,6,6)];
+	var Block3=[Vector3(6,4,8), Vector3(7,4,8),Vector3(8,4,8),Vector3(9,4,8),Vector3(6,5,8), Vector3(7,5,8),Vector3(8,5,8),Vector3(9,5,8),Vector3(6,6,8), Vector3(7,6,8),Vector3(8,6,8),Vector3(9,6,8)];
+	for (i=0;i<12;i++)
+	{
+		grid.CreateBlock(Block1[i]);
+		grid.CreateBlock(Block2[i]);
+		grid.CreateBlock(Block3[i]);
+	}
+	
+	var b1=grid.CreateButton(Vector3(5,6,4),Block1,[],false);
+	b1.reverse=true;
+	b1.mode=1;
+	var b2=grid.CreateButton(Vector3(5,6,6),Block2,[],false);
+	b2.reverse=true;
+	b2.mode=1;
+	var b3=grid.CreateButton(Vector3(5,6,8),Block3,[],false);
+	b3.reverse=true;
+	b3.mode=1;
+	
+	
+	grid.SpawnCharacter(Vector3(9,5,0));
+	grid.CreateDestination(Vector3(0, 10, 9));
 }
-
-
-function setDestination(grid:Grid, location:Vector3){
-	grid.getSpaceBox(location).destination=true;
-	grid.getSpaceBox(location).prefab.transform.GetChild(7).renderer.material=materialDest;
-}
-*/

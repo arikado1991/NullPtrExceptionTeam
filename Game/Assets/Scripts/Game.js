@@ -16,7 +16,7 @@ function Awake () {
 	var stscript:SettingScript= GameObject.FindGameObjectWithTag("setting").GetComponent("SettingScript");
 
 	AllPrefabs = stscript.FetchPrefabs();
-	timeLimit = stscript.FetchTimeLimits();
+	//timeLimit = stscript.FetchTimeLimits();
 	state="inGame";
 	move=0;
 	Application.targetFrameRate = 50;
