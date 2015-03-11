@@ -1,12 +1,11 @@
 ﻿var materialDest:   Material;
 
-function generateLevel3(grid:Grid){
+function GenerateLevel(grid:Grid){
 	var block: SpaceBox;
 	var pos: Vector3;
-	
+	grid.SetGrid(11,10,10);
 	for (var i: int=0; i<11; i++){
 		for (var j: int=0;j<10;j++){
-			grid.CreateTile(Vector3(i,0,j));
 			grid.CreateBlock(Vector3(i,0,j));
 			if (i==0)
 			{
@@ -29,9 +28,9 @@ function generateLevel3(grid:Grid){
 		}
 	}
 	
+	grid.SpawnCharacter(Vector3(1,9,1));
 	grid.CreateIceBlock(Vector3(3,1,2));
-		
-	setDestination(grid, Vector3(5, 2, 8));
+	grid.CreateDestination(Vector3(5, 3, 8));
 }
 
 
@@ -46,7 +45,7 @@ var buttonH:int = 100;
 var instruct: int=0;
 function OnGUI(){
 	if (instruct==0){
-	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Push the green cube forward\n (Press space to continue)");
+	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Press Z to push the green cube\n (Press space to continue)");
 	 }
 	if (instruct==1){
 	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Step on it to climb the cliff\n (Press space to continue)");

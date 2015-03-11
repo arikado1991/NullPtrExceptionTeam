@@ -36,11 +36,18 @@ class Character extends System.Object
 			return desiredPos + Vector3.up;} //Step up}
 
 		
+<<<<<<< HEAD
 		if (!grid.hasStandable(desiredPos) && grid.hasStandable(desiredPos + Vector3.down) ){	
 			willJump = true;
 			return desiredPos + Vector3.down;
 		} //Step down}
 		Debug.Log("How");
+=======
+		if (!grid.hasStandable(desiredPos) && grid.hasStandable(desiredPos + Vector3.down) )
+		{	willJump = true;
+			return desiredPos + Vector3.down;} //Step down}
+		//Debug.Log("How");
+>>>>>>> origin/master
 		return pos;
 	}
 
@@ -106,6 +113,10 @@ class Character extends System.Object
 			this.dirction=finalR;
 			return;
 		}
+<<<<<<< HEAD
+=======
+		//Debug.Log("Got here");
+>>>>>>> origin/master
 		var target:Vector3 = motionTarget(dir, grid);
 		below = checkBelow(grid);
 		if (below.type == SType.BOX){
