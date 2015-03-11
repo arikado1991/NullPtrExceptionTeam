@@ -101,7 +101,7 @@ class Character extends System.Object
 			default:
 				finalR = 3;				
 			}
-			fig.transform.RotateAround(fig.collider.bounds.center, Vector3.up,90*(this.dirction-finalR));
+			fig.transform.RotateAround(fig.transform.position, Vector3.up,90*(this.dirction-finalR));
 			//animation possible here
 			this.dirction=finalR;
 			return;
@@ -118,8 +118,9 @@ class Character extends System.Object
 		var startTime:float = Time.time;
 		var startPos:Vector3 = pos;
 		var endPos:Vector3 = target;
-		if(willJump) { prefab.BroadcastMessage("Jump");}
+		if(willJump) { prefab.BroadcastMessage("Jump"); yield (WaitForSeconds(.3));}
 		else prefab.BroadcastMessage("Walk");
+;
 		while (Time.time < startTime + time){
 			
 			prefab.transform.position = Vector3.Slerp(startPos, endPos, (Time.time - startTime)/time);
