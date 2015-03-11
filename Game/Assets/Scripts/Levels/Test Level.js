@@ -7,7 +7,6 @@ function generateDemoLevel(grid:Grid){
 	
 	for (var i: int=0; i<20; i++){
 		for (var j: int=0;j<20;j++){
-		//	grid.CreateTile(Vector3(i,0,j));
 		}
 	}
 	

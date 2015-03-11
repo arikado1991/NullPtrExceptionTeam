@@ -36,9 +36,10 @@ class Character extends System.Object
 			return desiredPos + Vector3.up;} //Step up}
 
 		
-		if (!grid.hasStandable(desiredPos) && grid.hasStandable(desiredPos + Vector3.down) )
-		{	willJump = true;
-			return desiredPos + Vector3.down;} //Step down}
+		if (!grid.hasStandable(desiredPos) && grid.hasStandable(desiredPos + Vector3.down) ){	
+			willJump = true;
+			return desiredPos + Vector3.down;
+		} //Step down}
 		Debug.Log("How");
 		return pos;
 	}
@@ -102,45 +103,50 @@ class Character extends System.Object
 				finalR = 3;				
 			}
 			fig.transform.RotateAround(fig.transform.position, Vector3.up,90*(this.dirction-finalR));
-			//animation possible here
 			this.dirction=finalR;
 			return;
 		}
-		Debug.Log("Got here");
 		var target:Vector3 = motionTarget(dir, grid);
 		below = checkBelow(grid);
-		if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
-			(below as ButtonBox).Release();
+		if (below.type == SType.BOX){
+			if ( (below as Block).bType == BoxType.BUTTON)
+				(below as ButtonBox).Release();
+			else if((below as Block).bType == BoxType.TRAP)
+				(below as TrapBox).Collapse();
 		}
 		
 		isMoving = true;
-		
+	
 		var startTime:float = Time.time;
 		var startPos:Vector3 = pos;
 		var endPos:Vector3 = target;
-		if(willJump) { prefab.BroadcastMessage("Jump"); yield (WaitForSeconds(.3));}
+		if(pos!=endPos) {
+		if(willJump) { 
+			prefab.BroadcastMessage("Jump"); 
+			yield (WaitForSeconds(.3));}
 		else prefab.BroadcastMessage("Walk");
-;
-		while (Time.time < startTime + time){
+			while (Time.time < startTime + time){
+				
+				prefab.transform.position = Vector3.Slerp(startPos, endPos, (Time.time - startTime)/time);
+				yield;
+			}prefab.BroadcastMessage("Stop");
+			pos = endPos;
+			prefab.transform.position = pos;
+			var yum: SpaceBox = grid.getSpaceBox(pos);
+			if (yum != null && yum.type == SType.EDIBLE)
+			{
+				if((yum as Edible).eType == EdibleType.DEST)
+					grid.state = GridState.FINISHED;
+			}
+			below = checkBelow(grid);
 			
-			prefab.transform.position = Vector3.Slerp(startPos, endPos, (Time.time - startTime)/time);
-			yield;
-		}prefab.BroadcastMessage("Stop");
-		pos = endPos;
-		prefab.transform.position = pos;
-		var yum: SpaceBox = grid.getSpaceBox(pos);
-		if (yum != null && yum.type == SType.EDIBLE)
-		{
-			if((yum as Edible).eType == EdibleType.DEST)
-				grid.state = GridState.FINISHED;
-		}
+			if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
+				(below as ButtonBox).getPushed();
+			}
+			
 		
-		
-//		Debug.Log(endPos.ToString());
-		below = checkBelow(grid);
-		
-		if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
-			(below as ButtonBox).getPushed();
+			prefab.FindGameObjectWithTag("MainCamera").BroadcastMessage("SwitchView",grid.hasBox(pos+Vector3.back));
+
 		}
 		isMoving = false;
 		willJump = false;
