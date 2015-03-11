@@ -101,7 +101,7 @@ function OnGUI()
 			Application.LoadLevel("LevelSelect");
 		}
 		
-		if ( level < 4 && GUI.Button(Rect(Screen.width / 2 - buttonW/2, Screen.height*.6, buttonW, buttonH), "Continue")){
+		if ( level < 5 && GUI.Button(Rect(Screen.width / 2 - buttonW/2, Screen.height*.6, buttonW, buttonH), "Continue")){
 			Application.LoadLevel("Level "+ (level+1).ToString());
 		}
 

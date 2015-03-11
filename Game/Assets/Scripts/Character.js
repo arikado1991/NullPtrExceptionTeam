@@ -76,9 +76,11 @@ class Character extends System.Object
 			}
 		return desiredPos;
 	}
+	
 	function checkBelow(grid:Grid){
 		return grid.getSpaceBox(pos+Vector3.down);
 	}
+	
 	function move( dir: Dir, grid: Grid )
 	{	
 		var fig: Transform= prefab.FindGameObjectWithTag("Rufus").transform;
@@ -101,18 +103,28 @@ class Character extends System.Object
 			default:
 				finalR = 3;				
 			}
+			
 			fig.transform.RotateAround(fig.transform.position, Vector3.up,90*(this.dirction-finalR));
 			//animation possible here
 			this.dirction=finalR;
 			return;
 		}
-		//Debug.Log("Got here");
-		var target:Vector3 = motionTarget(dir, grid);
-		below = checkBelow(grid);
-		if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
-			(below as ButtonBox).Release();
+		
+		var x:Vector3=spaceInFront(pos,dir);
+		
+		/*if (grid.grid[x.x,x.y-1,x.z]==null)
+		{
+			return;
 		}
 		
+		//Debug.Log("Got here");
+		
+		below = checkBelow(grid);
+		if ( below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
+			(below as ButtonBox).Release();
+		}*/
+		
+		var target:Vector3 = motionTarget(dir, grid);
 		isMoving = true;
 		
 		var startTime:float = Time.time;
@@ -136,6 +148,13 @@ class Character extends System.Object
 		
 		
 //		Debug.Log(endPos.ToString());
+		var oldBelow=grid.getSpaceBox(startPos+Vector3.down);
+		if (startPos!=endPos && oldBelow.type == SType.BOX && (oldBelow as Block).bType == BoxType.BUTTON)
+		{
+			(oldBelow as ButtonBox).Release();
+		}
+		
+
 		below = checkBelow(grid);
 		
 		if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
