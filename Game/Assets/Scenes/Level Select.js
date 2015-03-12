@@ -14,13 +14,12 @@ function Start () {
 	var levelslist = [["Level 1: Get Walking", "Level 1"], 
 						["Level 2: Buttons!", "Level 2"], 
 						["Level 3: Slide around", "Level 3"], 
-//						["Level 4: Combinations", "Level 4"], 
 						["Level 4: Getting Complicated", "Level 5"], 
 						["Level 5: Fancy Sliding", "Level 7"], 
 						["Level 6: Combo tricks", "Level 8"], 
 						["Level 7: Final challenge", "Level 6"], 
 						
-						["Level 10: Earthquake!", "Level 10"], 
+						["Level 8: Earthquake!", "Level 10"], 
 						//["Open demo", "Level 4"],
 						["Title Screen", "Title"]];
 	maxLv = levelslist.GetLength(0);
