@@ -55,7 +55,7 @@ function GenerateLevel(grid:Grid){
 	}
 	
 	
-	grid.BuildRect(Vector3(0,0,14), Vector3(3,0,19), "box");
+	grid.BuildRect(Vector3(0,0,14), Vector3(2,0,19), "box");
 	grid.CreateBlock(Vector3(0,0,13));
 	grid.CreateButton(Vector3(0,0,12),[Vector3(1,0,12),Vector3(1,0,11),Vector3(2,0,11),Vector3(3,0,11), Vector3(4,0,11), Vector3(5,0,11)],[Vector3(0,0,13)], false);
 	grid.BuildRect(Vector3(5,1,12), Vector3(10,1,18), "box");
@@ -64,23 +64,26 @@ function GenerateLevel(grid:Grid){
 	grid.CreateIceBlock(Vector3(9,2,16));
 	grid.CreateIceBlock(Vector3(6,2,13));
 	grid.CreateButton(Vector3(5,1,17),[Vector3(9,1,19), Vector3(8,1,19)],[Vector3(9,1,12)],true);
-	grid.CreateButton(Vector3(5,1,14),[Vector3(4,1,16)],[],true);
+	grid.CreateButton(Vector3(5,1,14),[Vector3(4,1,17),Vector3(3,1,17)],[],true);
 	grid.CreateButton(Vector3(10,1,18),rebuiltBridge,[],true);
-	
+
+
+	//grid.CreateButton(Vector3(3-j,0,14+j),[],[Vector3(3-i,0,17), Vector3(3-i,0,18), Vector3(3-i,0,19)],false);
+
 	for (i=0;i<3;i++){
-		grid.CreateButton(Vector3(3,0,16-i),[],[],false);
-		grid.CreateButton(Vector3(i,0,16),[],[], false);
+		for(j=0;j<3;j++)
+			grid.CreateButton(Vector3(2-j,0,16-i),[],[ Vector3(2-i,0,18), Vector3(2-i,0,19)],false);
 	}
-	for (i=0;i<2;i++){
-		grid.CreateButton(Vector3(3,0,16-i),[],[],false);
-		grid.CreateButton(Vector3(i,0,16),[],[], false);
-	}
-	
-	
+	grid.CreateButton(Vector3(1,0,14),[],[ Vector3(0,0,17), Vector3(1,0,17)],false);
+	for (i=0;i<2;i++)
+		for(j=15;j<17;j++)
+			grid.Destroy(Vector3(i,0,j));
 	grid.SpawnCharacter(Vector3(0,9,5));
+	grid.CreateBlock(Vector3(0,0,14));
 //	grid.SpawnCharacter(Vector3(5,2,12));
 	grid.CreatePizza(Vector3(3,12,16));
-	grid.CreateDestination(Vector3(1,1,7));
+	grid.CreatePuppy(Vector3(0,1,14));
+	grid.CreateDestination (Vector3(0,1,19));
 	
 	grid.character.prefab.FindGameObjectWithTag("MainCamera").BroadcastMessage("Shake");
 }

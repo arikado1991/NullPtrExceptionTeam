@@ -7,6 +7,8 @@ class ButtonBox extends Block{
 	var elastic: boolean;
 	var reverse: boolean=false;
 	var mode:int;
+	
+	var hintPrefab:GameObject;
 	function ButtonBox(grid, boxes2make: Vector3[], boxes2dest: Vector3[], elastic: boolean){
 		super(grid);
 		bType = BoxType.BUTTON;
@@ -14,6 +16,16 @@ class ButtonBox extends Block{
 		this.boxes2dest = boxes2dest;
 		this.elastic = elastic;
 		this.mode=0;
+		
+		this.hintPrefab = Resources.Load("ButtonHintPrefab");
+		
+		//GameObject.FindObjectsOfTypeIncludingAssets(ButtonHintPrefab);
+		for (var i:int = 0; i<boxes2make.length; i++){
+			GameObject.Instantiate(this.hintPrefab, boxes2make[i], Quaternion.identity);
+		}
+		for (i = 0; i<boxes2dest.length; i++){
+			GameObject.Instantiate(this.hintPrefab, boxes2dest[i], Quaternion.identity);
+		}
 	}
 	
 	function getPushed(){

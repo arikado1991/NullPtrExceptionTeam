@@ -133,9 +133,13 @@ function OnGUI()
 			Application.LoadLevel("LevelSelect");
 		}
 		
-		if ( level < 5 && GUI.Button(Rect(Screen.width / 2 - buttonW/2, Screen.height*.6, buttonW, buttonH), "Continue")){
+		if (GUI.Button(Rect(Screen.width / 2 - buttonW/2, Screen.height*.6, buttonW, buttonH), "Continue")){
+			if (level < 10) 
 			Application.LoadLevel("Level "+ (level+1).ToString());
+			if (level == 10 )
+				Application.LoadLevel("Conclusion");
 		}
+
 
 	}
 }

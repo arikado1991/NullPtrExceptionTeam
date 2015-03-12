@@ -7,8 +7,8 @@
 			//grid.CreateTile(Vector3(i,0,j));
 			if (i == 5) continue;
 			grid.CreateBlock(Vector3(i,0,j));
-			if (i == 4 && j == 0) continue;
-			if (i == 6 && j == 9) continue;
+//			if (i == 4 && j == 0) continue;
+//			if (i == 6 && j == 9) continue;
 			grid.CreateBlock(Vector3(i,1,j));
 		}
 	}

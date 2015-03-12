@@ -4,23 +4,24 @@ function GenerateLevel(grid:Grid){
 	var block: SpaceBox;
 	var pos: Vector3;
 	
-	grid.SetGrid(10,10,10);
+	grid.SetGrid(7,10,7);
 	
-	grid.BuildRect(Vector3(0, 0, 0), Vector3(9,0,5),"box");
-	grid.BuildRect(Vector3(0, 1, 4), Vector3(4,2,4), "box");
-	grid.CreateIceBlock(Vector3(1,1,3));
-	grid.CreateButton(Vector3(4, 1, 3), [Vector3(5,1,6),Vector3(5,1,5),Vector3(5,1,7)],[Vector3(0, 1, 4)], false);
-	grid.BuildRect(Vector3(0, 0, 7), Vector3(9,0,9),"box");
+	grid.BuildRect(Vector3(0, 0, 0), Vector3(6,0,6),"box");
+	grid.BuildRect(Vector3(0, 1, 0), Vector3(0,2,6),"box");
+	grid.BuildRect(Vector3(6, 1, 0), Vector3(6,2,6),"box");
+	grid.BuildRect(Vector3(1, 1, 6), Vector3(5,2,6),"box");
 	
-	grid.SpawnCharacter(Vector3(0,9,0));
-	grid.CreateDestination(Vector3(9,1,9));
+//	grid.CreateBlock(Vector3(8, 0, 8));
+	
+	grid.SpawnCharacter(Vector3(2, 1, 0));
+	grid.CreateDestination(Vector3(4,1,4));
 }
 
 
-function setDestination(grid:Grid, location:Vector3){
-	grid.getSpaceBox(location).destination=true;
-	grid.getSpaceBox(location).prefab.transform.GetChild(7).renderer.material=materialDest;
-}
+//function setDestination(grid:Grid, location:Vector3){
+//	grid.getSpaceBox(location).destination=true;
+//	grid.getSpaceBox(location).prefab.transform.GetChild(7).renderer.material=materialDest;
+//}
 
 var windowRect : Rect = Rect (Screen.width/2-150, 10, 300, 200);
 var buttonW:int = 200;

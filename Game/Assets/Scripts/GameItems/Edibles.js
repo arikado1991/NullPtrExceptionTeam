@@ -1,5 +1,5 @@
 ﻿#pragma strict
-enum EdibleType {PIZZA, DEST};
+enum EdibleType {PIZZA, DEST, PUPPY};
 class Edible extends SpaceBox{
 	var eType: EdibleType;
 	function Edible(grid: Grid, type: EdibleType ){
