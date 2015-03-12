@@ -15,6 +15,7 @@ function GenerateLevel(grid:Grid){
 	
 	grid.SpawnCharacter(Vector3(2, 1, 0));
 	grid.CreateDestination(Vector3(4,1,4));
+
 }
 
 
@@ -23,16 +24,16 @@ function GenerateLevel(grid:Grid){
 //	grid.getSpaceBox(location).prefab.transform.GetChild(7).renderer.material=materialDest;
 //}
 
-var windowRect : Rect = Rect (Screen.width/2-150, 10, 300, 200);
-var buttonW:int = 200;
-var buttonH:int = 100;
 var instruct: int=0;
 function OnGUI(){
 	if (instruct==0){
-	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Use arrow keys to move\n (Press space to continue)");
+	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 60), InstructionFunction, "Use arrow keys to move\n (Press space to continue)");
 	 }
-	if (instruct==1){
-	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Move to the red cube\n (Press space to continue)");
+	 if (instruct==1){
+	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 60), InstructionFunction, "Use X or C to rotate the camera\n");
+	}
+	if (instruct==2){
+	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 60), InstructionFunction, "Move to the red cube\n");
 	}
 }
 

@@ -45,10 +45,10 @@ var buttonH:int = 100;
 var instruct: int=0;
 function OnGUI(){
 	if (instruct==0){
-	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Press Z to push the green cube\n (Press space to continue)");
+	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 60), InstructionFunction, "Press Z to push the green cube\n (Press space to continue)");
 	 }
 	if (instruct==1){
-	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 70), InstructionFunction, "Step on it to climb the cliff\n (Press space to continue)");
+	 GUI.Window (0, Rect(Screen.width/2-150, 10, 300, 60), InstructionFunction, "Step on it to climb the cliff\n");
 	}
 }
 
