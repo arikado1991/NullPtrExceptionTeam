@@ -137,6 +137,22 @@ function OnGUI()
 		var buttonW: int = Screen.height*.4;
 		customSkin.button.fontSize = Screen.height*.08;
 		
+		if (nextScene=="Ending")
+		{
+			if (numPizza >=12)
+			{
+				Application.LoadLevel("Ending3");
+			}
+			if (numPizza >=10)
+			{
+				Application.LoadLevel("Ending2");
+			}
+			else{
+				Application.LoadLevel("Ending1");
+			}
+			
+		}
+		
 		GUI.skin = customSkin;
 		GUI.Box(Rect(Screen.width*.3,Screen.height*.15,Screen.width*.4,Screen.height*.7), "Nice Job!");
 		if (GUI.Button(Rect(Screen.width / 2 - buttonW/2, Screen.height*.3, buttonW, buttonH), "Level Select")){
