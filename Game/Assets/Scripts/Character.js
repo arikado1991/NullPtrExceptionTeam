@@ -146,7 +146,7 @@ class Character extends System.Object
 			}
 			
 		
-			prefab.FindGameObjectWithTag("MainCamera").BroadcastMessage("SwitchView",grid.hasBox(pos+Vector3.back) );
+			//prefab.FindGameObjectWithTag("MainCamera").BroadcastMessage("SwitchView",grid.hasBox(pos+Vector3.back) );
 
 		}
 		isMoving = false;
