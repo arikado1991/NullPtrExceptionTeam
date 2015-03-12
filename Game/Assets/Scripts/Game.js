@@ -10,7 +10,7 @@ var level:          int;
 var customSkin: 	GUISkin;
 var setting: 		SettingScript;
 var timeLimit:		float[];
-var numPizza:		int;
+static var numPizza:		int;
 
 function Awake () {
 
@@ -140,7 +140,7 @@ function OnGUI()
 	}
 }
 
-function getPizza()
+static function getPizza()
 {
 	numPizza+=1;
 }
