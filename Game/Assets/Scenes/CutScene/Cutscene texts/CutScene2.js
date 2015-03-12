@@ -19,8 +19,16 @@ function Awake(){
 		"...",
 		"...",
 		"Doctor: That was close.",
+<<<<<<< Updated upstream
 		"..."
 		
+=======
+		"...",
+		"Oh you came to...",
+		"You're in your dream again of course.",
+		"I guess it makes sense since you're gonna stick around for a while...",
+		"You can call me Spike!"
+>>>>>>> Stashed changes
 		];
 		
 //		counter = 0;
