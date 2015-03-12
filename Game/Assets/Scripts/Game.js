@@ -60,6 +60,9 @@ function getControlKey(){
 		c.transform.RotateAround(character.prefab.transform.position, Vector3.up,-2);
 	}
 
+	if (Input.GetKeyDown('f')){
+		character.moveTime *= 0.5;
+	}
 
 	if (character.onButton==true)
 	{

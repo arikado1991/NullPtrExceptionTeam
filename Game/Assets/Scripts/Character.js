@@ -78,10 +78,11 @@ class Character extends System.Object
 	function checkBelow(grid:Grid){
 		return grid.getSpaceBox(pos+Vector3.down);
 	}
+	var moveTime: float = 0.4;
 	function move( dir: Dir, grid: Grid )
 	{	
 		var fig: Transform= prefab.FindGameObjectWithTag("Rufus").transform;
-		var time: float = 0.4;
+		var time: float = moveTime;
 		var below: SpaceBox;
 		if (isMoving ) {;return;}
 		if (this.dir != dir){
@@ -123,7 +124,7 @@ class Character extends System.Object
 		isMoving = true;
 			if(willJump) { 
 				prefab.BroadcastMessage("Jump"); 
-				yield (WaitForSeconds(.3));
+				yield (WaitForSeconds(moveTime * 0.75));
 			}
 			else prefab.BroadcastMessage("Walk");
 			while (Time.time < startTime + time){
