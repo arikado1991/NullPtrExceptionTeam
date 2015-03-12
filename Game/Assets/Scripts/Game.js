@@ -41,31 +41,36 @@ function getControlKey(){
 		character.onButton=false;
 	}
 	
-	if (Input.GetKeyUp('z')){
+	if (Input.GetKeyDown('z')){
 		processing = true;
-		character.tryToPushIce(character.dir, grid);
-		//Debug.Log('z');
+		StartCoroutine(character.tryToPushIce(character.dir, grid));
+		yield WaitForSeconds(.2);
 	}
 	
 	if (Input.GetKeyDown (KeyCode.UpArrow)){
 		processing = true;
 		StartCoroutine(character.move(Dir.UP, grid));
 		move++;
+		yield WaitForSeconds(.2);
 	}
 	else if (Input.GetKeyDown (KeyCode.DownArrow)){
 		processing = true;
 		StartCoroutine(character.move(Dir.DOWN, grid));
 		move++;
+		yield WaitForSeconds(.2);
 	}
 	else if (Input.GetKeyDown (KeyCode.LeftArrow)){
 		processing = true;
 		StartCoroutine(character.move(Dir.LEFT, grid));
 		move++;
+		yield WaitForSeconds(.2);
 	}
 	else if (Input.GetKeyDown (KeyCode.RightArrow)){
 		processing = true;
 		StartCoroutine(character.move(Dir.RIGHT, grid));
 		move++;
+		yield WaitForSeconds(.2);
+		
 	}
 	/* WON!*/
 	processing = false;
