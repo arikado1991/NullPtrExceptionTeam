@@ -7,12 +7,15 @@ var state:   		String= "inGame";
 var materialDest:   Material;
 var move:    		int;
 var level:          int;
+var nextScene:		String;
 var customSkin: 	GUISkin;
 var setting: 		SettingScript;
 var timeLimit:		float[];
 var numPizza:		int;
 
 function Awake () {
+
+	if (!nextScene) nextScene = "Level " + (level + 1).ToString();
 
 	var stscript:SettingScript= GameObject.FindGameObjectWithTag("setting").GetComponent("SettingScript");
 	
@@ -115,7 +118,7 @@ function OnGUI()
 	{
 		GUI.Box(Rect(20, 10, 100, 20), "Pizza: "+ numPizza);
 		if (GUI.Button(Rect(20, 40, 50, 30), "Retry")){
-			Application.LoadLevel("Level "+ (level).ToString());
+			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
 	if (state == "won")
@@ -135,9 +138,8 @@ function OnGUI()
 		
 		if (GUI.Button(Rect(Screen.width / 2 - buttonW/2, Screen.height*.6, buttonW, buttonH), "Continue")){
 			if (level < 10) 
-			Application.LoadLevel("Level "+ (level+1).ToString());
-			if (level == 10 )
-				Application.LoadLevel("Conclusion");
+			
+			Application.LoadLevel(nextScene);
 		}
 
 
