@@ -25,7 +25,7 @@
 	}
 	grid.CreateBlock(Vector3(8,2,3));
 	grid.CreateIceBlock(Vector3(1, 2, 3));
-	var button:Block=grid.CreateButton(Vector3(13,1,1),[Vector3(11,2,7),Vector3(11,3,8),Vector3(11,4,9)],[],false);
+	var button:Block=grid.CreateButton(Vector3(13,1,5),[Vector3(11,2,7),Vector3(11,3,8),Vector3(11,4,9)],[],false);
 	
 	grid.SpawnCharacter(Vector3(1,5,1));
 	grid.CreateDestination(Vector3(1, 5, 13));
