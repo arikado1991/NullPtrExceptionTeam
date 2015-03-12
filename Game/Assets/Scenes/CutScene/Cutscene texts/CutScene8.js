@@ -13,7 +13,7 @@ function Awake(){
 	"Anyhow, we are almost there.",
 	"That? It's noth ... No Rufus! Don't go that way!",""
 	];
-
+// ads
 }
 function LoadScene()
 {
