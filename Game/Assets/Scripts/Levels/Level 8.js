@@ -41,7 +41,8 @@
 	var button:Block=grid.CreateButton(Vector3(1,3,6),[Vector3(2,0,2),Vector3(3,0,2),Vector3(4,0,2)],[],false);
 	
 	grid.SpawnCharacter(Vector3(1,5,1));
-	grid.CreateDestination(Vector3(3, 4, 4));
+	grid.CreateDestination(Vector3(6, 4, 6));
+	grid.CreatePizza(Vector3(3,4,4));
 	grid.CreatePizza(Vector3(3,2,3));
 	
 }
