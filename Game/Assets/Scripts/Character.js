@@ -137,7 +137,13 @@ class Character extends System.Object
 			if (yum != null && yum.type == SType.EDIBLE)
 			{
 				if((yum as Edible).eType == EdibleType.DEST)
-					grid.state = GridState.FINISHED;
+					{grid.state = GridState.FINISHED;}
+				/*else
+				{
+					GameObject.Destroy(yum.prefab);
+					grid.grid[pos.x, pos.y, pos.z] = null;
+					
+				}*/
 			}
 			below = checkBelow(grid);
 	
