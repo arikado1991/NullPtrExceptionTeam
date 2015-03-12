@@ -44,5 +44,6 @@
 	grid.CreateDestination(Vector3(6, 4, 6));
 	grid.CreatePizza(Vector3(3,4,4));
 	grid.CreatePizza(Vector3(3,2,3));
+	grid.player.FindGameObjectWithTag("MainCamera").BroadcastMessage("Shake");
 	
 }

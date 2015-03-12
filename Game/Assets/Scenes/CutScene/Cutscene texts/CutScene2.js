@@ -25,7 +25,7 @@ function Awake(){
 		"I guess it makes sense since you're gonna stick around for a while...",
 		"You can call me Spike!",
 		"<woman screaming>",
-		"Wendy who's that??",
+		"Wendy? Who's that??",
 		"Rufus! Wait!",""
 		
 		];
