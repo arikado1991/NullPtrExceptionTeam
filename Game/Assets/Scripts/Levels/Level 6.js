@@ -21,7 +21,6 @@
 	grid.BuildRect(Vector3(0, 4, 0), Vector3(5,4,3),"box");
 	grid.BuildRect(Vector3(0, 5, 0), Vector3(3,5,3),"box");
 	grid.BuildRect(Vector3(0, 6, 0), Vector3(1,6,3),"box");
-	grid.CreateBlock(Vector3(0,9,9));
 	
 	grid.CreateIceBlock(Vector3(8, 4, 1));
 	grid.CreateIceBlock(Vector3(8, 5, 1));
@@ -54,5 +53,21 @@
 	grid.CreatePizza(Vector3(9,7,9));
 	
 	grid.SpawnCharacter(Vector3(9,5,0));
-	grid.CreateDestination(Vector3(0, 10, 9));
+	grid.CreateDestination(Vector3(1, 9, 8));
+}
+
+var instruct: int=0;
+function OnGUI(){
+
+	var buttonW:int = 400;
+	var buttonH:int = 100;
+	if (instruct==0){
+	 GUI.Window (0, Rect(Screen.width/2-buttonW/2, 10, buttonW, buttonH), InstructionFunction, 
+	 	"Try pushing the bottom block.\nIt's pretty fun.\n(Press space to dismiss)");
+	}
+}
+
+function InstructionFunction(windowID: int){
+	if (Input.GetKeyUp("space"))
+		instruct++;
 }
