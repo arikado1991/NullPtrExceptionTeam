@@ -31,6 +31,8 @@ function GenerateLevel(grid:Grid){
 	grid.SpawnCharacter(Vector3(1,9,1));
 	grid.CreateIceBlock(Vector3(3,1,2));
 	grid.CreateDestination(Vector3(5, 3, 8));
+	grid.CreatePizza(Vector3(2,3,7));
+	grid.CreatePizza(Vector3(10,4,1));
 }
 
 

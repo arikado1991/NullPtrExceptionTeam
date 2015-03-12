@@ -20,8 +20,12 @@ function Awake () {
 //	timeLimit = stscript.FetchTimeLimits();
 	state="inGame";
 	move=0;
-	numPizza=0;
-	if (level!=1)
+	if (level==1)
+	{
+		numPizza=0;
+		PlayerPrefs.SetInt("TotalPizza",numPizza);
+	}
+	else
 	{
 		numPizza=PlayerPrefs.GetInt("TotalPizza");
 	}
