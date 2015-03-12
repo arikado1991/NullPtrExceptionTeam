@@ -57,6 +57,7 @@ function getControlKey(){
 	if (Input.GetKey('c'))
 	{
 		c=character.prefab.FindGameObjectWithTag("MainCamera");
+	
 		c.transform.RotateAround(character.prefab.transform.position, Vector3.up,-2);
 	}
 
