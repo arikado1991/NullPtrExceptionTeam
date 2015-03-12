@@ -1,5 +1,5 @@
 ﻿var materialDest:   Material;
-
+var instructions: String[];
 function GenerateLevel(grid:Grid){
 	var block: SpaceBox;
 	var pos: Vector3;
@@ -12,6 +12,8 @@ function GenerateLevel(grid:Grid){
 	grid.BuildRect(Vector3(1, 1, 6), Vector3(5,2,6),"box");
 	
 //	grid.CreateBlock(Vector3(8, 0, 8));
+	instructions = ["Use the arrow keys to move\ntoward the spinning radioactive pizza!.\n (Press spacebar for to view more)",
+	"What spacebar? How the heck should I know?", "If you don't like how the pizza look? Go and complain on \n 'personal.denison.edu/~lalla'!"];
 	
 	grid.SpawnCharacter(Vector3(2, 1, 0));
 	grid.CreateDestination(Vector3(4,1,4));
@@ -23,8 +25,9 @@ function OnGUI(){
 
 	var buttonW:int = 400;
 	var buttonH:int = 100;
-	if (instruct==0){
-	 GUI.Window (0, Rect(Screen.width/2-buttonW/2, 10, buttonW, buttonH), InstructionFunction, "Use the arrow keys to move\ntoward the spinning target\n (Press space to dismiss)");
+	if (instruct < instructions.length){
+	 GUI.Window (0, Rect(Screen.width/2-buttonW/2, 10, buttonW, buttonH), 
+	 InstructionFunction, instructions[instruct]);
 	}
 }
 

@@ -8,6 +8,7 @@ function Awake(){
 		
 		
 		this.GetComponent(GUITexture).texture = bg;
+		
 		this.GetComponent(RollingScript).texts = ["<Rufus, half awaken and confused. He hears a voice talking to him>", "Rufus!", 
 		"Rufus, wake up!", 
 		"No I am not God.",
@@ -26,9 +27,7 @@ function Awake(){
 
 		"... You're about to die. Hurry!"
 		];
-//		counter = 0;
-//	BroadcastMessage("setBackground", bg);
-//	BroadcastMessage("setTexts", texts);
+
 }
 function Start()
 {
