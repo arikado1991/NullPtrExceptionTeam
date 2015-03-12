@@ -20,7 +20,7 @@ var instruct: int=0;
 function OnGUI(){
 
 	var buttonW:int = 400;
-	var buttonH:int = 60;
+	var buttonH:int = 100;
 	if (instruct==0){
 	 GUI.Window (0, Rect(Screen.width/2-buttonW/2, 10, buttonW, buttonH), InstructionFunction, "Oh no! You can't reach the target!\nMaybe that button could help...\n(Press space to dismiss)");
 	}
