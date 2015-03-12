@@ -10,7 +10,7 @@ var level:          int;
 var customSkin: 	GUISkin;
 var setting: 		SettingScript;
 var timeLimit:		float[];
-
+var numPizza:		int;
 
 function Awake () {
 
@@ -20,6 +20,11 @@ function Awake () {
 //	timeLimit = stscript.FetchTimeLimits();
 	state="inGame";
 	move=0;
+	numPizza=0;
+	if (level!=1)
+	{
+		numPizza=PlayerPrefs.GetInt("TotalPizza");
+	}
 	Application.targetFrameRate = 50;
 	grid = new Grid(AllPrefabs);
 	this.BroadcastMessage("GenerateLevel", grid);
@@ -108,13 +113,14 @@ function OnGUI()
 	
 	if(state == "inGame")
 	{
-		if (GUI.Button(Rect(Screen.height*.02, Screen.height*.02,Screen.height*.1, Screen.height*.1), "Retry")){
+		GUI.Box(Rect(20, 10, 100, 20), "Pizza: "+ numPizza);
+		if (GUI.Button(Rect(20, 40, 50, 30), "Retry")){
 			Application.LoadLevel("Level "+ (level).ToString());
 		}
 	}
 	if (state == "won")
 	{
-
+		PlayerPrefs.SetInt("TotalPizza",numPizza);
 		customSkin.box.fontSize = Screen.height*.1;
 
 		var buttonH:int = Screen.height*.2;
@@ -132,4 +138,9 @@ function OnGUI()
 		}
 
 	}
+}
+
+function getPizza()
+{
+	numPizza+=1;
 }
