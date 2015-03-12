@@ -82,15 +82,22 @@ class Grid extends System.Object{
 		b.loadPrefab(prefabs[3]);
 		Destroy(Vector3(pos.x, pos.y, pos.z));
 		grid[pos.x, pos.y, pos.z] = b;
+		var below:SpaceBox = getSpaceBox(pos + Vector3.down);
+		if (below != null && below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
+			(below as ButtonBox).getPushed();
+		}
 		return b;
 	}
 	
 	function CreateBlock(pos: Vector3):Block{
 		var b: Block = new Block(this);
+		
 		b.loadPos (pos);
 		b.loadPrefab(prefabs[2]);
 		Destroy(Vector3(pos.x, pos.y, pos.z));
 		grid[pos.x, pos.y, pos.z] = b;
+		
+			
 		return b;
 	}
 

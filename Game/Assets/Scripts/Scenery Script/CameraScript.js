@@ -60,6 +60,6 @@ function Stabilize(){
 function Update(){
 	if (isShaking){
 		transform.localPosition =  Origin+ Vector3(
-		Random.Range(0,20)/100.0,Random.Range(0,20)/100.0,Random.Range(0,20)/100.0);
+		Random.Range(0,10)/100.0,Random.Range(0,10)/100.0,Random.Range(0,10)/100.0);
 	}
 }

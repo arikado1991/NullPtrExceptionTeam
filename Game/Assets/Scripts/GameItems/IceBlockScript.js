@@ -50,16 +50,23 @@ function slide(dir:Dir){
 	var topBlocks = new IceBlock[10];
 	while (grid.hasIce(Vector3(oldPos.x, oldPos.y+j, oldPos.z)))
 		{
-		//Debug.Log("ICEEEEEEE!");
-		//Debug.Log(Vector3(oldPos.x, oldPos.y+1, oldPos.z));
+
 		var b: IceBlock = grid.getSpaceBox(Vector3(oldPos.x, oldPos.y+j, oldPos.z));
 		topBlocks[j-1]=b;
 		j+=1;
 		}	
+		
+	if (canMove(dir)){
+		var below: SpaceBox = grid.getSpaceBox(oldPos + Vector3.down);
+		if (below != null && (below as Block).bType ==  BoxType.BUTTON){
+			(below as ButtonBox).Release();
+		}
+	}
 	while (canMove(dir)){
 		grid.grid[oldPos.x, oldPos.y, oldPos.z] = null;
 		var start:Vector3 = transform.position;
 		var end:Vector3 = spaceInFront(start, dir);
+		
 		for (var i = 0; i < 3; i++){
 			transform.position = Vector3.Slerp(start, end, (i+1)/3.0);
 			//Debug.Log(topBlocks[1].prefab.transform.position);
@@ -76,6 +83,11 @@ function slide(dir:Dir){
 		roundPos();
 		var p:Vector3 = transform.position;
 		grid.grid[p.x, p.y, p.z] = box;
+		below = grid.getSpaceBox(p + Vector3.down);
+		if (below != null && (below as Block).bType ==  BoxType.BUTTON){
+			(below as ButtonBox).getPushed();
+		}
+		
 		for ( q=1;q<j;q++){
 		grid.grid[p.x, p.y+q, p.z] = topBlocks[q-1];
 		}

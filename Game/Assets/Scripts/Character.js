@@ -54,6 +54,7 @@ class Character extends System.Object
 		obj.SendMessage("setGrid", grid);
 		obj.SendMessage("setBox", b);
 		obj.SendMessage("slide", dir);
+		yield WaitForSeconds(.4);
 		
 		
 	}
@@ -139,7 +140,7 @@ class Character extends System.Object
 					grid.state = GridState.FINISHED;
 			}
 			below = checkBelow(grid);
-			Debug.Log(below.GetType());
+	
 			if (below.type == SType.BOX && (below as Block).bType == BoxType.BUTTON){
 				(below as ButtonBox).getPushed();
 			}
