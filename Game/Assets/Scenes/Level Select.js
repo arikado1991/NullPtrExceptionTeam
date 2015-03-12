@@ -11,9 +11,10 @@ var levels:String[,];
 var maxLv: int ;
 
 function Start () {
-	var levelslist = [["Level 1 : Get Walking", "Level 1"], 
+	var levelslist = [["Level 1 : Get Walking", "Level 1 old"], 
 						["Level 2: Buttons!", "Level 2"], 
 						["Level 3: Slide around", "Level 3"], 
+						["Level 2: Combinations", "Level 1"], 
 						["Level 4: Getting Complicated", "Level 4"], 
 						["Level 5: Breaking Walls", "Level 5"], 
 						["Level 6: Fancy Sliding", "Level 22"], 
