@@ -31,4 +31,8 @@
 	
 	grid.SpawnCharacter(Vector3(1,1,1));
 	grid.CreateDestination(Vector3(5,8,5));
+	
+	grid.CreatePizza(Vector3(5,2,3));
+	grid.CreatePizza(Vector3(4,3,2));
+	
 }

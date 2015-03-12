@@ -11,7 +11,7 @@ var nextScene:		String;
 var customSkin: 	GUISkin;
 var setting: 		SettingScript;
 var timeLimit:		float[];
-var numPizza:		int;
+static var numPizza:		int;
 
 function Awake () {
 
@@ -23,8 +23,12 @@ function Awake () {
 //	timeLimit = stscript.FetchTimeLimits();
 	state="inGame";
 	move=0;
-	numPizza=0;
-	if (level!=1)
+	if (level==1)
+	{
+		numPizza=0;
+		PlayerPrefs.SetInt("TotalPizza",numPizza);
+	}
+	else
 	{
 		numPizza=PlayerPrefs.GetInt("TotalPizza");
 	}
@@ -146,7 +150,7 @@ function OnGUI()
 	}
 }
 
-function getPizza()
+static function getPizza()
 {
 	numPizza+=1;
 }
