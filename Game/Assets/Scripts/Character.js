@@ -138,6 +138,8 @@ class Character extends System.Object
 			{
 				if((yum as Edible).eType == EdibleType.DEST)
 					grid.state = GridState.FINISHED;
+				else if((yum as Edible).eType == EdibleType.PUPPY)
+					grid.state = GridState.END;
 			}
 			below = checkBelow(grid);
 	
