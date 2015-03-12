@@ -5,7 +5,7 @@
 	grid.SetGrid(15,10,15);
 	for (var i: int=0; i<15; i++){
 		for (var j: int=0;j<15;j++){
-			if (j<6 && (i==5 || i==6 || i==7 ||i==8))
+			if (j<6 && (i==5 || i==6 || i==7))
 			{
 				if(j==3 && i!=8){
 				grid.CreateBlock(Vector3(i,3,j));}
@@ -29,4 +29,8 @@
 	
 	grid.SpawnCharacter(Vector3(1,5,1));
 	grid.CreateDestination(Vector3(1, 5, 13));
+	
+	grid.CreatePizza(Vector3(6,4,3));
+	grid.CreatePizza(Vector3(0,5,6));
+	grid.CreatePizza(Vector3(11,4,8));
 }

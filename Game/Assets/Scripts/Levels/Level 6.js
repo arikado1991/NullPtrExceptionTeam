@@ -39,18 +39,18 @@
 		grid.CreateBlock(Block3[i]);
 	}
 	
-	var b1=grid.CreateButton(Vector3(5,6,4),Block1,[],false);
+	var b1=grid.CreateButton(Vector3(5,6,5),Block1,[],false);
 	b1.reverse=true;
 	b1.mode=1;
-	var b2=grid.CreateButton(Vector3(5,6,6),Block2,[],false);
+	var b2=grid.CreateButton(Vector3(5,6,7),Block2,[],false);
 	b2.reverse=true;
 	b2.mode=1;
-	var b3=grid.CreateButton(Vector3(5,6,8),Block3,[],false);
+	var b3=grid.CreateButton(Vector3(5,6,9),Block3,[],false);
 	b3.reverse=true;
 	b3.mode=1;
 	
 	grid.CreatePizza(Vector3(3,6,2));
-	grid.CreatePizza(Vector3(9,8,5));
+	grid.CreatePizza(Vector3(8,8,6));
 	grid.CreatePizza(Vector3(9,7,9));
 	
 	grid.SpawnCharacter(Vector3(9,5,0));

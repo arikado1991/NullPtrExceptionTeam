@@ -12,7 +12,7 @@
 
 	grid.SpawnCharacter(Vector3(1,2,0));		
 	grid.CreateDestination(Vector3(6, 2, 2));
-	
+	grid.CreatePizza(Vector3(6,2,4));	
 }
 
 

@@ -15,6 +15,7 @@ function GenerateLevel(grid:Grid){
 	
 	grid.SpawnCharacter(Vector3(2, 1, 0));
 	grid.CreateDestination(Vector3(4,1,4));
+
 }
 
 var instruct: int=0;

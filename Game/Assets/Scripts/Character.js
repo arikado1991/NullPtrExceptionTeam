@@ -138,12 +138,12 @@ class Character extends System.Object
 			{
 				if((yum as Edible).eType == EdibleType.DEST)
 					{grid.state = GridState.FINISHED;}
-				/*else
+				else
 				{
 					GameObject.Destroy(yum.prefab);
 					grid.grid[pos.x, pos.y, pos.z] = null;
-					
-				}*/
+					X();
+				}
 			}
 			below = checkBelow(grid);
 	
@@ -161,5 +161,9 @@ class Character extends System.Object
 		return;
 	}
 
-	
+	//This function is used to avoid a cycle between the Game script and this script
+	function X()
+	{
+		Game.numPizza+=1;
+	}
 };
