@@ -1,17 +1,25 @@
 ﻿#pragma strict
 var customSkin:GUISkin;
 var buttonW:int;// = 600;
+@HideInInspector
 var buttonH:int;// = 100;
+@HideInInspector
 var padding:int;// = 30;
 var levels:String[,]; 
 
+@HideInInspector
 var maxLv: int ;
 
 function Start () {
-	var levelslist = [["Play Level 1", "Level 1"], 
-						["Play Level 2", "Level 2"], 
-						["Play Level 3", "Level 3"], 
-						["Open demo", "Level 4"],
+	var levelslist = [["Level 1 : Get Walking", "Level 1"], 
+						["Level 2: Buttons!", "Level 2"], 
+						["Level 3: Slide around", "Level 3"], 
+						["Level 4: Getting Complicated", "Level 4"], 
+						["Level 5: Fancy Sliding", "Level 22"], 
+						["Level 6: Combo tricks", "Level 21"], 
+						
+						["Level 10: Earthquake!", "Level 10"], 
+						//["Open demo", "Level 4"],
 						["Title Screen", "Title"]];
 	maxLv = levelslist.GetLength(0);
 	levels = new String[maxLv,2];
@@ -25,9 +33,9 @@ function Start () {
 function Update () {}
 
 function OnGUI(){
-
+	GUI.skin = customSkin;
 	buttonH = Screen.height*.8/ maxLv;
-	buttonW = buttonH*2;
+//	buttonW = buttonH*2;
 	padding = Screen.height*.02;
 	for (var i:int = 0; i < maxLv; i++){
 
