@@ -137,7 +137,7 @@ class Grid extends System.Object{
 	}
 	
 	function CreatePizza(pos: Vector3){
-		var d: Edible = new Edible(this,EdibleType.DEST);
+		var d: Edible = new Edible(this,EdibleType.PIZZA);
 		d.loadPos (pos);
 		d.loadPrefab(prefabs[5]);
 		Destroy(Vector3(pos.x, pos.y, pos.z));

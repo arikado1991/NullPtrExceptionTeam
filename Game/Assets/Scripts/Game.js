@@ -34,6 +34,21 @@ function getControlKey(){
 	
 	var p:Vector3 =character.pos - Vector3.down;
 
+	if (Input.GetKey('x'))
+	{
+		var c=character.prefab.FindGameObjectWithTag("MainCamera");
+		
+		c.transform.RotateAround(character.prefab.transform.position, Vector3.up,2);
+	}
+
+	if (Input.GetKey('c'))
+	{
+		c=character.prefab.FindGameObjectWithTag("MainCamera");
+		
+		c.transform.RotateAround(character.prefab.transform.position, Vector3.up,-2);
+	}
+
+
 	if (character.onButton==true)
 	{
 		var b: ButtonBox = grid.getSpaceBox(p);
