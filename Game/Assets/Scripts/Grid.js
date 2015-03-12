@@ -1,5 +1,5 @@
 ﻿#pragma strict
-enum GridState {IDLE, INGAME, FINISHED};
+enum GridState {IDLE, INGAME, FINISHED, END};
 class Grid extends System.Object{
 	var prefabs: GameObject[];
 	var grid: SpaceBox[,,];
@@ -91,6 +91,18 @@ class Grid extends System.Object{
 	
 	function CreateBlock(pos: Vector3):Block{
 		var b: Block = new Block(this);
+		
+		b.loadPos (pos);
+		b.loadPrefab(prefabs[2]);
+		Destroy(Vector3(pos.x, pos.y, pos.z));
+		grid[pos.x, pos.y, pos.z] = b;
+		
+			
+		return b;
+	}
+	
+	function CreatePuppy(pos:Vector3):Edible{
+		var b: Block = new Edible(this, EdibleType.PUPPY);
 		
 		b.loadPos (pos);
 		b.loadPrefab(prefabs[2]);
