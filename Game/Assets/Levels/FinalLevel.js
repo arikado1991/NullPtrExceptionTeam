@@ -67,8 +67,12 @@ function GenerateLevel(grid:Grid){
 	grid.CreateButton(Vector3(5,1,14),[Vector3(4,1,16)],[],true);
 	grid.CreateButton(Vector3(10,1,18),rebuiltBridge,[],true);
 	
-	for (i=0;i<4;i++){
-		grid.CreateButton(Vector3(3,0,16+i),[],[],false);
+	for (i=0;i<3;i++){
+		grid.CreateButton(Vector3(3,0,16-i),[],[],false);
+		grid.CreateButton(Vector3(i,0,16),[],[], false);
+	}
+	for (i=0;i<2;i++){
+		grid.CreateButton(Vector3(3,0,16-i),[],[],false);
 		grid.CreateButton(Vector3(i,0,16),[],[], false);
 	}
 	
