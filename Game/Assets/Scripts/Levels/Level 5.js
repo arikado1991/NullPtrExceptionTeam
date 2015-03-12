@@ -2,7 +2,7 @@
 	var block: SpaceBox;
 	var pos: Vector3;
 	
-	grid.SetGrid(10,20,10);
+	grid.SetGrid(10,11,10);
 	for (var i: int=0; i<10; i++){
 		for (var j: int=0;j<10;j++){
 			
@@ -49,6 +49,9 @@
 	b3.reverse=true;
 	b3.mode=1;
 	
+	grid.CreatePizza(Vector3(3,6,2));
+	grid.CreatePizza(Vector3(9,8,5));
+	grid.CreatePizza(Vector3(9,7,9));
 	
 	grid.SpawnCharacter(Vector3(9,5,0));
 	grid.CreateDestination(Vector3(0, 10, 9));
