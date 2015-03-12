@@ -15,8 +15,9 @@ function Start () {
 						["Level 2: Buttons!", "Level 2"], 
 						["Level 3: Slide around", "Level 3"], 
 						["Level 4: Getting Complicated", "Level 4"], 
-						["Level 5: Fancy Sliding", "Level 22"], 
-						["Level 6: Combo tricks", "Level 21"], 
+						["Level 5: Breaking Walls", "Level 5"], 
+						["Level 6: Fancy Sliding", "Level 22"], 
+						["Level 7: Combo tricks", "Level 21"], 
 						
 						["Level 10: Earthquake!", "Level 10"], 
 						//["Open demo", "Level 4"],
