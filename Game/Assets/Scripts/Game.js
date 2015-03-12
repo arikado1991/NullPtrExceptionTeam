@@ -49,14 +49,14 @@ function getControlKey(){
 	if (Input.GetKey('x'))
 	{
 		var c=character.prefab.FindGameObjectWithTag("MainCamera");
-		
+		//c.BroadcastMessage("Stabilize");
 		c.transform.RotateAround(character.prefab.transform.position, Vector3.up,2);
+		//c.BroadcastMessage("Shake");
 	}
 
 	if (Input.GetKey('c'))
 	{
 		c=character.prefab.FindGameObjectWithTag("MainCamera");
-		
 		c.transform.RotateAround(character.prefab.transform.position, Vector3.up,-2);
 	}
 

@@ -45,7 +45,11 @@ function SwitchView( top:boolean){
 }
 
 
-
+function rotateX(pos:Vector3)
+{
+	Stabilize();
+	transform.RotateAround(pos, Vector3.up,2);
+}
 
 
 function Shake(){
