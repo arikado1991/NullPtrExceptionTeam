@@ -16,11 +16,11 @@ function OnGUI () {
 	var halfButtonW:float = buttonW/2;
 	GUI.skin = customSkin;
 
-	if(GUI.Button(Rect(Screen.width*.75-halfButtonW, Screen.height*1/3, halfButtonW*2, halfButtonW), "Start"))
+	if(GUI.Button(Rect(Screen.width*.75-halfButtonW, Screen.height*1/5, halfButtonW*2, halfButtonW), "Start"))
 	{
 	Application.LoadLevel("Cutscene1");
 	}
-	if(GUI.Button(Rect(Screen.width*.75-halfButtonW, Screen.height*2/3, halfButtonW*2, halfButtonW), "Level Select"))
+	if(GUI.Button(Rect(Screen.width*.75-halfButtonW, Screen.height*3/5, halfButtonW*2, halfButtonW), "Level Select"))
 	{
 		Application.LoadLevel("LevelSelect");
 	}
