@@ -102,10 +102,10 @@ class Grid extends System.Object{
 	}
 	
 	function CreatePuppy(pos:Vector3):Edible{
-		var b: Block = new Edible(this, EdibleType.PUPPY);
+		var b: Edible = new Edible(this, EdibleType.PUPPY);
 		
 		b.loadPos (pos);
-		b.loadPrefab(prefabs[2]);
+		b.loadPrefab(prefabs[7]);
 		Destroy(Vector3(pos.x, pos.y, pos.z));
 		grid[pos.x, pos.y, pos.z] = b;
 		

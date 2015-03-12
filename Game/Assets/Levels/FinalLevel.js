@@ -82,7 +82,7 @@ function GenerateLevel(grid:Grid){
 	grid.CreateBlock(Vector3(0,0,14));
 //	grid.SpawnCharacter(Vector3(5,2,12));
 	grid.CreatePizza(Vector3(3,12,16));
-	grid.CreateDestination(Vector3(0,1,14));
+	grid.CreatePuppy(Vector3(0,1,14));
 	grid.CreateDestination (Vector3(0,1,19));
 	
 	grid.character.prefab.FindGameObjectWithTag("MainCamera").BroadcastMessage("Shake");
