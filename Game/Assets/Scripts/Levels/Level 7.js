@@ -36,3 +36,19 @@
 	grid.CreatePizza(Vector3(4,3,2));
 	
 }
+
+var instruct: int=0;
+function OnGUI(){
+
+	var buttonW:int = 400;
+	var buttonH:int = 70;
+	if (instruct==0){
+	 GUI.Window (0, Rect(Screen.width/2-buttonW/2, 10, buttonW, buttonH), InstructionFunction, 
+	 	"Just keep going. Up.\n(Press space to dismiss)");
+	}
+}
+
+function InstructionFunction(windowID: int){
+	if (Input.GetKeyUp("space"))
+		instruct++;
+}
